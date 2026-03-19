@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import HeroBg from "../../components/HeroBg.jsx";
+import { ui } from "../../i18n/ui";
+import { isLang } from "../../i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+    { params: { lang: "nl" } },
+  ];
+}
+
+const { lang } = Astro.params;
+if (!lang || !isLang(lang)) throw new Error("Invalid lang");
+
+const t = ui[lang];
+---
+
+<BaseLayout lang={lang} title="Pierina Lopez — Portfolio">
+  <SiteShell active="home" lang={lang}>
+    <section class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-10">
+      <HeroBg client:load />
+
+      <div class="relative z-10 max-w-3xl">
+        <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+          {t.hero.pill}
+        </p>
+
+        <h1 class="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight">
+          {t.hero.title}
+        </h1>
+
+        <p class="mt-4 text-white/75 text-base sm:text-lg leading-relaxed">
+          {t.hero.body}
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={`/${lang}/internship`}
+            class="rounded-xl bg-white text-neutral-950 px-4 py-2 text-sm font-semibold hover:bg-white/90 transition"
+          >
+            {t.hero.cta1}
+          </a>
+          <a
+            href={`/${lang}/projects`}
+            class="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition"
+          >
+            {t.hero.cta2}
+          </a>
+          <a
+            href={`/${lang}/cv`}
+            class="rounded-xl border border-white/15 bg-transparent px-4 py-2 text-sm font-semibold text-white/80 hover:text-white hover:bg-white/5 transition"
+          >
+            {t.hero.cta3}
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
+          <div class="text-sm font-semibold">{t.cards.cv.title}</div>
+          <div class="mt-1 text-xs text-white/70">{t.cards.cv.body}</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
+          <div class="text-sm font-semibold">{t.cards.auto.title}</div>
+          <div class="mt-1 text-xs text-white/70">{t.cards.auto.body}</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
+          <div class="text-sm font-semibold">{t.cards.iot.title}</div>
+          <div class="mt-1 text-xs text-white/70">{t.cards.iot.body}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10 grid gap-6 lg:grid-cols-2">
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 class="text-xl font-semibold">{t.sections.find}</h2>
+        <ul class="mt-4 space-y-2 text-white/75">
+          {t.sections.findBullets.map((b: string) => <li>• {b}</li>)}
+        </ul>
+      </div>
+
+      
+    </section>
+  </SiteShell>
+</BaseLayout>

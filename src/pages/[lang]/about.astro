@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import WorldTile from "../../components/WorldTile.astro";
+import { ui } from "../../i18n/ui";
+import { isLang } from "../../i18n/utils";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+    { params: { lang: "nl" } },
+  ];
+}
+
+const { lang } = Astro.params;
+if (!lang || !isLang(lang)) throw new Error("Invalid lang");
+const t = ui[lang];
+
+// Same content you had, but slightly more professional tone:
+const tiles = [
+  {
+    title: t.about.tiles.travel.title,
+    text: t.about.tiles.travel.text,
+    imgSrc: "/assets/about/about-travel.png",
+  },
+  {
+    title: t.about.tiles.tattoo.title,
+    text: t.about.tiles.tattoo.text,
+    imgSrc: "/assets/about/about-tattoo.png",
+  },
+  {
+    title: t.about.tiles.arq.title,
+    text: t.about.tiles.arq.text,
+    imgSrc: "/assets/about/about-arq.png",
+  },
+  {
+    title: t.about.tiles.read.title,
+    text: t.about.tiles.read.text,
+    imgSrc: "/assets/about/about-read.png",
+  },
+  {
+    title: t.about.tiles.iot.title,
+    text: t.about.tiles.iot.text,
+    imgSrc: "/assets/about/about-iot.png",
+  },
+  {
+    title: t.about.tiles.video.title,
+    text: t.about.tiles.video.text,
+    videoSrc: "/assets/video/about.mp4",
+  },
+];
+---
+
+<BaseLayout lang={lang} title={`${t.nav.about} — Pierina Lopez`}>
+  <SiteShell active="about" lang={lang}>
+    <div class="max-w-5xl">
+      <!-- About block -->
+      <section class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">{t.about.title}</h1>
+
+        <p class="mt-4 text-white/75 leading-relaxed">{t.about.p1}</p>
+
+        <p class="mt-4 text-white/75 leading-relaxed">{t.about.p2}</p>
+
+      </section>
+
+      <!-- My World in Pictures -->
+      <section class="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+        <h2 class="text-center text-2xl sm:text-3xl font-semibold tracking-tight">{t.about.worldTitle}</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          {tiles.map((tile) => (
+            <WorldTile
+                title={tile.title}
+                text={tile.text}
+                imgSrc={tile.imgSrc}
+                videoSrc={tile.videoSrc}
+            />
+            ))}
+        </div>
+      </section>
+    </div>
+  </SiteShell>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteShell from "../../../components/SiteShell.astro";
+import { projects } from "../../../content/projects";
+import { ui } from "../../../i18n/ui";
+import { isLang } from "../../../i18n/utils";
+import ProjectsGrid from "../../../components/ProjectsGrid.jsx";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+    { params: { lang: "nl" } },
+  ];
+}
+
+const { lang } = Astro.params;
+if (!lang || !isLang(lang)) throw new Error("Invalid lang");
+const t = ui[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.nav.projects} — Pierina Lopez`}>
+  <SiteShell active="projects" lang={lang}>
+    <div class="max-w-6xl">
+      <header class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">{t.nav.projects}</h1>
+        <p class="mt-4 text-white/75 leading-relaxed">
+          Case studies written for IT professionals: context, what I built, and what I learned.
+        </p>
+      </header>
+
+      <!-- Filters + Grid (React) -->
+      <ProjectsGrid client:load lang={lang} projects={projects} />
+    </div>
+  </SiteShell>
+</BaseLayout>

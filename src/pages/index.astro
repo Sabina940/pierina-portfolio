@@ -1,0 +1,14 @@
+---
+import { defaultLang } from "../i18n/config";
+---
+
+<script is:inline>
+  const saved = localStorage.getItem("lang");
+  const lang = (saved === "en" || saved === "es" || saved === "nl") ? saved : "{defaultLang}";
+  window.location.replace("/" + lang + "/");
+</script>
+
+<noscript>
+  <meta http-equiv="refresh" content={"0; url=/" + "{defaultLang}" + "/"} />
+</noscript>
+

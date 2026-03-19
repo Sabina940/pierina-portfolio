@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import InternshipDashboard from "../../components/InternshipDashboard.jsx";
+import { ui } from "../../i18n/ui";
+import { isLang } from "../../i18n/utils";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }, { params: { lang: "nl" } }];
+}
+
+const { lang } = Astro.params;
+if (!lang || !isLang(lang)) throw new Error("Invalid lang");
+const t = ui[lang];
+---
+
+<BaseLayout lang={lang} title={`${t.nav.internship} — Pierina Lopez`}>
+  <SiteShell active="internship" lang={lang}>
+    <div class="max-w-6xl">
+      <InternshipDashboard client:load />
+    </div>
+  </SiteShell>
+</BaseLayout>

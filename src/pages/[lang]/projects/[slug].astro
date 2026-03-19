@@ -1,0 +1,227 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteShell from "../../../components/SiteShell.astro";
+import { projects } from "../../../content/projects";
+import { ui } from "../../../i18n/ui";
+import { isLang } from "../../../i18n/utils";
+
+export async function getStaticPaths() {
+  const langs = ["en", "es", "nl"] as const;
+  return langs.flatMap((lang) =>
+    projects.map((p) => ({ params: { lang, slug: p.slug } }))
+  );
+}
+
+const { lang, slug } = Astro.params;
+if (!lang || !isLang(lang)) throw new Error("Invalid lang");
+const t = ui[lang];
+
+const project = projects.find((p) => p.slug === slug);
+if (!project) throw new Error("Project not found");
+
+
+const index = projects.findIndex((p) => p.slug === slug);
+const prev = index > 0 ? projects[index - 1] : null;
+const next = index < projects.length - 1 ? projects[index + 1] : null;
+---
+
+<BaseLayout lang={lang} title={`${project.title} — ${t.nav.projects}`}>
+  <SiteShell active="projects" lang={lang}>
+    <div class="max-w-5xl">
+      <a href={`/${lang}/projects`} class="text-sm text-white/60 hover:text-white">← Back to projects</a>
+
+      <header class="mt-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+        <div class="relative aspect-[16/9]">
+          <img src={project.cover} alt={project.title} class="absolute inset-0 h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+            <div class="text-xs text-white/70">{project.year}</div>
+            <h1 class="mt-2 text-3xl sm:text-4xl font-semibold tracking-tight">{project.title}</h1>
+            <p class="mt-3 text-white/75">{project.subtitle}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="rounded-full border border-white/15 bg-black/20 px-2.5 py-1 text-xs text-white/70">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </header>
+      {project.links?.length ? (
+        <section class="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h2 class="text-base font-semibold">Artifacts</h2>
+            <div class="flex flex-wrap gap-2">
+              {project.links.map((l) => (
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 transition"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {project.videoSrc ? (
+      <section class="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+        <div class="p-5 sm:p-6 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-white/90">Demo video</h2>
+          <a
+            href={project.videoSrc}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-white/60 hover:text-white transition"
+          >
+            Open fullscreen →
+          </a>
+        </div>
+
+        <video class="w-full bg-black" controls playsinline preload="metadata">
+          <source src={project.videoSrc} type="video/mp4" />
+        </video>
+      </section>
+    ) : null}
+
+      <section class="mt-8 grid gap-5">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 class="text-lg font-semibold">Context</h2>
+          <p class="mt-3 text-white/75 leading-relaxed">{project.sections.context}</p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <h2 class="text-lg font-semibold">My role</h2>
+            <ul class="mt-3 space-y-2 text-white/75">
+              {project.sections.role.map((x) => <li>• {x}</li>)}
+            </ul>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <h2 class="text-lg font-semibold">Skills & technologies</h2>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {project.sections.stack.map((x) => (
+                <span class="rounded-full border border-white/15 bg-black/20 px-2.5 py-1 text-xs text-white/70">{x}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 class="text-lg font-semibold">What I built</h2>
+          <ul class="mt-3 space-y-2 text-white/75">
+            {project.sections.built.map((x) => <li>• {x}</li>)}
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 class="text-lg font-semibold">What I learned</h2>
+          <ul class="mt-3 space-y-2 text-white/75">
+            {project.sections.learned.map((x) => <li>• {x}</li>)}
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h2 class="text-lg font-semibold">Gallery</h2>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            {project.gallery.map((img, idx) => (
+              <button
+                type="button"
+                class="gallery-thumb group overflow-hidden rounded-2xl border border-white/10 text-left"
+                data-src={img.src}
+                data-alt={img.alt}
+                aria-label={`Open image ${idx + 1}: ${img.alt}`}
+              >
+                <img src={img.src} alt={img.alt} class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]" loading="lazy" />
+              </button>
+            ))}
+          </div>
+
+          <!-- Lightbox -->
+          <div id="lightbox" class="fixed inset-0 z-[9999] hidden">
+            <div id="lightboxBackdrop" class="absolute inset-0 bg-black/80"></div>
+
+            <div class="relative mx-auto flex h-full max-w-6xl items-center justify-center p-4">
+              <button
+                id="lightboxClose"
+                type="button"
+                class="absolute right-4 top-4 rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/15"
+              >
+                Close ✕
+              </button>
+
+              <img id="lightboxImg" alt="" class="max-h-[85vh] w-auto max-w-full rounded-2xl border border-white/10 shadow-2xl" />
+              <div id="lightboxCaption" class="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-xs text-white/80 backdrop-blur"></div>
+            </div>
+          </div>
+
+  <script is:inline>
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lightboxImg");
+    const lbCap = document.getElementById("lightboxCaption");
+    const closeBtn = document.getElementById("lightboxClose");
+    const backdrop = document.getElementById("lightboxBackdrop");
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || "";
+      lbCap.textContent = alt || "";
+      lb.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lb.classList.add("hidden");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".gallery-thumb").forEach((btn) => {
+      btn.addEventListener("click", () => openLightbox(btn.dataset.src, btn.dataset.alt));
+    });
+
+    closeBtn?.addEventListener("click", closeLightbox);
+    backdrop?.addEventListener("click", closeLightbox);
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !lb.classList.contains("hidden")) closeLightbox();
+    });
+  </script>
+</div>
+
+        {project.links?.length ? (
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <h2 class="text-lg font-semibold">Links</h2>
+            <div class="mt-4 flex flex-wrap gap-3">
+              {project.links.map((l) => (
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 transition"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        <nav class="mt-2 flex items-center justify-between text-sm">
+          <div>
+            {prev ? <a class="text-white/70 hover:text-white" href={`/${lang}/projects/${prev.slug}`}>← {prev.title}</a> : <span class="text-white/30">←</span>}
+          </div>
+          <div>
+            {next ? <a class="text-white/70 hover:text-white" href={`/${lang}/projects/${next.slug}`}>{next.title} →</a> : <span class="text-white/30">→</span>}
+          </div>
+        </nav>
+      </section>
+    </div>
+  </SiteShell>
+</BaseLayout>

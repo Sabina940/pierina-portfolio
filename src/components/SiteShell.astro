@@ -1,0 +1,117 @@
+---
+import MobileMenu from "./MobileMenu.jsx";
+import LanguageSwitch from "./LanguageSwitch.astro";
+import { ui } from "../i18n/ui";
+import { isLang } from "../i18n/utils";
+
+const { active = "home", lang = "en" } = Astro.props;
+const safeLang = isLang(lang) ? lang : "en";
+const t = ui[safeLang];
+
+const nav = [
+  { id: "home", label: t.nav.home, href: `/${safeLang}/` },
+  { id: "about", label: t.nav.about, href: `/${safeLang}/about` },
+  { id: "internship", label: t.nav.internship, href: `/${safeLang}/internship` },
+  { id: "projects", label: t.nav.projects, href: `/${safeLang}/projects` },
+  { id: "cv", label: t.nav.cv, href: `/${safeLang}/cv` },
+];
+---
+
+<div class="min-h-screen">
+  <!-- Mobile top bar -->
+  <header class="sticky top-0 z-[100] bg-neutral-950/60 backdrop-blur border-b border-white/10 lg:hidden">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a
+          href={`/${lang}/`}
+          aria-label="Go to Home"
+          class="h-9 w-9 rounded-xl border border-white/10 bg-white/5 grid place-items-center overflow-hidden hover:bg-white/10 transition"
+        >
+          <img
+            src="/favicon/favicon-32x32.png"
+            alt="Pierina Lopez"
+            class="h-5 w-5"
+            loading="eager"
+          />
+        </a>
+        <div class="leading-tight">
+          <div class="font-semibold">Pierina Lopez</div>
+          <div class="text-xs text-white/60">Applied Computer Science • AEC → Tech</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a class="text-white/80 hover:text-white text-sm" href="/projects">Projects</a>
+        <MobileMenu
+            client:load
+            active={active}
+            lang={lang}
+            labels={t.nav}
+          />
+        </div>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-6xl lg:flex">
+    <!-- Desktop sidebar -->
+    <aside class="hidden lg:block lg:w-64 lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-white/10">
+      <div class="p-6">
+        <div class="flex items-center gap-3">
+          <a
+            href={`/${lang}/`}
+            aria-label="Go to Home"
+            class="h-10 w-10 rounded-xl border border-white/10 bg-white/5 grid place-items-center overflow-hidden hover:bg-white/10 transition"
+          >
+            <img
+              src="/favicon/favicon-32x32.png"
+              alt="Pierina Lopez"
+              class="h-6 w-6"
+              loading="eager"
+            />
+          </a>
+          <div>
+            <div class="font-semibold">Pierina Lopez</div>
+            <div class="text-xs text-white/60">Applied Computer Science</div>
+          </div>
+        </div>
+
+        <nav class="mt-8 space-y-1">
+          {nav.map((item) => (
+            <a
+            href={item.href}
+            class:list={[
+                "group relative block rounded-xl px-3 py-2 text-sm transition",
+                "focus:outline-none focus:ring-2 focus:ring-white/15",
+                item.id === active
+                ? "bg-white/10 text-white"
+                : "text-white/70 hover:text-white hover:bg-white/5",
+            ]}
+            
+            >
+                
+            <span
+                class:list={[
+                "absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 rounded-full transition",
+                item.id === active ? "bg-white/60" : "bg-transparent group-hover:bg-white/20",
+                ]}
+            ></span>
+
+            <span class="pl-2">{item.label}</span>
+            </a>
+          ))}
+          
+        </nav>
+        <LanguageSwitch lang={lang} />
+
+        <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/70">
+          <div class="font-semibold text-white/90 mb-1">Focus</div>
+          Making project information clearer, faster, and easier to act on — for teams in the field and office.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 px-4 py-10 lg:px-10">
+      <slot />
+    </main>
+  </div>
+</div>
