@@ -1,8 +1,10 @@
 ---
-
-return Astro.redirect("/en");
-
 import { defaultLang } from "../i18n/config";
+
+// Optional: if you *always* want / -> /en (static redirect):
+return Astro.redirect(`/${defaultLang}`);
+
+// Better: let Netlify handle redirects and keep this page minimal.
 ---
 
 <script is:inline>
@@ -12,6 +14,5 @@ import { defaultLang } from "../i18n/config";
 </script>
 
 <noscript>
-  <meta http-equiv="refresh" content={"0; url=/" + "{defaultLang}" + "/"} />
+  <meta http-equiv="refresh" content="0; url=/{defaultLang}/" />
 </noscript>
-
