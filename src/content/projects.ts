@@ -127,7 +127,7 @@ export const projects: Project[] = [
     links: [
       { label: "Project brief (PDF)", href: "/assets/projects/tennis-analytics/Project%20Brief%20Deck.pdf" },
       { label: "Project report (PDF)", href: "/assets/projects/tennis-analytics/Project%20Report.pdf" },
-      { label: "Code (ZIP)", href: "/assets/projects/tennis-analytics/CV_Challenge_Team_1_Tennis.zip" },
+      
     ],
     sections: {
       context:
