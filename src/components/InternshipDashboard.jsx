@@ -14,7 +14,7 @@ const P = {
   videoSrc: "/assets/projects/internship/demo.mp4",
   links: [
     { label: "Realization Document", href: "/assets/projects/internship/realization-document.pdf" },
-    { label: "Reflexion Document",   href: "/assets/projects/internship/reflection.pdf" },
+    { label: "Reflection Document",   href: "/assets/projects/internship/reflection.pdf" },
   ],
   stats: [
     { val: "26",   lbl: "Automations" },
