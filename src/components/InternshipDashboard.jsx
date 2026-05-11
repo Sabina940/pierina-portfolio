@@ -19,7 +19,6 @@ const P = {
   stats: [
     { val: "26",   lbl: "Automations" },
     { val: "5",    lbl: "Zones" },
-    { val: "€680", lbl: "Hardware" },
     { val: "0",    lbl: "Cloud deps" },
     { val: "4",    lbl: "Deliverables" },
     { val: "13",   lbl: "Weeks" },
