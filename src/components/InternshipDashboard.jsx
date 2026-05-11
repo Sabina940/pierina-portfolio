@@ -109,7 +109,7 @@ function VideoPlayer({ src }) {
           <button
             type="button"
             aria-label="Play demo"
-            className="w-16 h-16 rounded-full bg-[#E8793C] flex items-center justify-center shadow-[0_0_32px_rgba(232,121,60,0.4)] hover:scale-105 transition-transform"
+            className="w-16 h-16 rounded-full bg-[#C96B4A] flex items-center justify-center shadow-[0_0_32px_rgba(201,107,74,0.4)] hover:scale-105 transition-transform"
           >
             <svg width={22} height={22} viewBox="0 0 24 24" fill="white">
               <path d="M8 5v14l11-7z" />
@@ -184,7 +184,7 @@ function GalleryItem({ img, onClick }) {
           className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-[1.04]"
         />
       )}
-      <div className="absolute inset-0 bg-[#0D1B2A]/0 group-hover:bg-[#0D1B2A]/60 transition-all duration-200 flex items-end p-2">
+      <div className="absolute inset-0 bg-[#0F2018]/0 group-hover:bg-[#0F2018]/60 transition-all duration-200 flex items-end p-2">
         <span className="text-transparent group-hover:text-white/80 text-[10px] leading-tight transition-all duration-200">{img.alt}</span>
       </div>
     </div>
@@ -203,8 +203,8 @@ export default function InternshipDashboard() {
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
         <div className="flex flex-wrap items-start justify-between gap-3 mb-5">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#2BA08A]/30 bg-[#2BA08A]/10 px-3 py-1 text-xs text-[#2BA08A] font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2BA08A] inline-block" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#8FAF93]/30 bg-[#8FAF93]/10 px-3 py-1 text-xs text-[#8FAF93] font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8FAF93] inline-block" />
             Completed · {P.year}
           </span>
           <div className="flex flex-wrap gap-2">
@@ -235,7 +235,7 @@ export default function InternshipDashboard() {
 
         <div className="flex flex-wrap gap-2">
           {P.tags.map((t) => (
-            <span key={t} className="text-[11px] px-2.5 py-1 rounded-md border border-[#E8793C]/25 bg-[#E8793C]/8 text-[#E8793C]">{t}</span>
+            <span key={t} className="text-[11px] px-2.5 py-1 rounded-md border border-[#C96B4A]/25 bg-[#C96B4A]/8 text-[#C96B4A]">{t}</span>
           ))}
         </div>
       </section>
@@ -244,7 +244,7 @@ export default function InternshipDashboard() {
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
         {P.stats.map((s) => (
           <div key={s.lbl} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">
-            <div className="text-2xl font-bold text-[#E8793C]">{s.val}</div>
+            <div className="text-2xl font-bold text-[#C96B4A]">{s.val}</div>
             <div className="text-[10px] text-white/40 mt-1 uppercase tracking-widest">{s.lbl}</div>
           </div>
         ))}
@@ -282,7 +282,7 @@ export default function InternshipDashboard() {
                 onClick={() => setActiveTab(t.id)}
                 className={`px-4 py-3 text-sm font-medium border-b-2 transition -mb-px ${
                   activeTab === t.id
-                    ? "text-white border-[#E8793C]"
+                    ? "text-white border-[#C96B4A]"
                     : "text-white/45 border-transparent hover:text-white/75"
                 }`}
               >
@@ -293,7 +293,7 @@ export default function InternshipDashboard() {
           <ul className="p-6 space-y-3">
             {currentTab.items.map((item, i) => (
               <li key={i} className="flex gap-3 text-sm text-white/65 leading-relaxed">
-                <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[#E8793C] flex-shrink-0" />
+                <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[#C96B4A] flex-shrink-0" />
                 {item}
               </li>
             ))}

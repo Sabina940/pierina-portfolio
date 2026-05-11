@@ -27,7 +27,7 @@ function Modal({ open, title, subtitle, period, bullets = [], onClose }) {
         aria-label="Close modal overlay"
         tabIndex={0}
       />
-      <div className="absolute left-1/2 top-1/2 w-[92%] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-2xl">
+      <div className="absolute left-1/2 top-1/2 w-[92%] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-white/10 bg-brand-forest p-6 shadow-2xl">
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-xs text-white/60">{period}</div>
@@ -256,7 +256,7 @@ export default function CVDashboard({ lang = "en", t, downloads }) {
               className={cx(
                 "rounded-full border px-3 py-1 text-xs transition",
                 activeTab === tab.id
-                  ? "border-white/20 bg-white/10 text-white"
+                  ? "border-brand-coral/30 bg-brand-coral/15 text-white"
                   : "border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10"
               )}
             >
@@ -325,7 +325,7 @@ export default function CVDashboard({ lang = "en", t, downloads }) {
             <h2 className="text-lg font-semibold">Technical skills</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {technical.map((x) => (
-                <span key={x} className="rounded-full border border-white/15 bg-black/20 px-2.5 py-1 text-xs text-white/70">
+                <span key={x} className="rounded-full border border-brand-green/40 bg-brand-green/20 px-2.5 py-1 text-xs text-white/70">
                   {x}
                 </span>
               ))}

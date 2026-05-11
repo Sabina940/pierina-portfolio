@@ -89,7 +89,7 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
             />
 
             <motion.aside
-              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm border-r border-white/10 bg-neutral-950 p-5 "
+              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm border-r border-white/10 bg-brand-forest p-5 "
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -30, opacity: 0 }}
@@ -120,7 +120,7 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                 </button>
               </div>
 
-              <nav className="mt-6 rounded-2xl border space-y-1 bg-black">
+              <nav className="mt-6 rounded-2xl border space-y-1 bg-brand-green/20">
                 {nav.map((item) => {
                   const Icon = item.icon;
                   const isActive = item.id === active;
@@ -132,18 +132,18 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                       className={[
                         "flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition border",
                         isActive
-                          ? "bg-white/10 border-white/20 text-white"
+                          ? "bg-brand-coral/15 border-brand-coral/30 text-white"
                           : "bg-transparent border-transparent text-white/70 hover:text-white hover:bg-white/5 hover:border-white/10",
                       ].join(" ")}
                     >
-                      <Icon size={16} className={isActive ? "text-white" : "text-white/60"} />
+                      <Icon size={16} className={isActive ? "text-brand-coral" : "text-white/60"} />
                       <span>{item.label}</span>
                     </a>
                   );
                 })}
               </nav>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black p-4">
+              <div className="mt-6 rounded-2xl border border-white/10 bg-brand-green/20 p-4">
                 <div className="flex items-center gap-2 text-sm font-semibold">
                   <Languages size={16} />
                   Language
@@ -156,7 +156,7 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                 
               </div>
 
-              <div className="mt-4 rounded-2xl border border-white/10 bg-black p-4">
+              <div className="mt-4 rounded-2xl border border-white/10 bg-brand-green/20 p-4">
                 <div className="text-sm font-semibold mb-2">Contact</div>
                 <div className="space-y-2 text-sm">
                   <a className="flex items-center gap-2 text-white/75 hover:text-white" href="mailto:plopez.be.94@gmail.com">
