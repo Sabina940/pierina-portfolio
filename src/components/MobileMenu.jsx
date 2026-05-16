@@ -89,13 +89,14 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
             />
 
             <motion.aside
-              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm border-r border-white/10 p-5 bg-[#0F2018]"
-              style={{ backgroundColor: '#0F2018' }}
+              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm"
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -30, opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
+              {/* Inner div owns the background — kept away from Framer Motion's style merging */}
+              <div className="h-full overflow-y-auto border-r border-white/10 p-5" style={{ backgroundColor: '#0F2018' }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <a
@@ -172,6 +173,7 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
     
                 </div>
               </div>
+              </div>{/* end inner background div */}
             </motion.aside>
           </>
         )}
