@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -76,30 +77,37 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
         <Menu size={18} />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              className="fixed inset-0 z-[2147483646] bg-black/60"
+      {typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {open && (
+            <>
+              <motion.div
+                style={{ position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.60)" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setOpen(false)}
+              />
 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
-            />
-
-            <motion.aside
-              className="fixed left-0 top-0 h-full w-[86%] max-w-sm overflow-y-auto p-5"
-              style={{
-                zIndex: 9999,
-                backgroundColor: '#0F2018',
-                borderRight: '1px solid rgba(255,255,255,0.10)',
-              }}
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-            >
+              <motion.aside
+                style={{
+                  position: "fixed",
+                  left: 0,
+                  top: 0,
+                  height: "100%",
+                  width: "86%",
+                  maxWidth: "24rem",
+                  zIndex: 9999,
+                  backgroundColor: "#0F2018",
+                  borderRight: "1px solid rgba(255,255,255,0.10)",
+                  overflowY: "auto",
+                  padding: "20px",
+                }}
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+              >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <a
@@ -177,9 +185,11 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                 </div>
               </div>
             </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }
