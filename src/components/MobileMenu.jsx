@@ -11,7 +11,7 @@ import {
   FileText,
   Mail,
   Linkedin,
-  Github,
+  Globe,
   Languages,
 } from "lucide-react";
 
@@ -181,7 +181,10 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                     <Linkedin size={16} className="text-white/60" />
                     LinkedIn
                   </a>
-    
+                  <a className="flex items-center gap-2 text-white/75 hover:text-white" href="https://pierinalopez.com/" target="_blank" rel="noopener noreferrer">
+                    <Globe size={16} className="text-white/60" />
+                    pierinalopez.com
+                  </a>
                 </div>
               </div>
             </motion.aside>
