@@ -17,68 +17,166 @@ const { lang } = Astro.params;
 if (!lang || !isLang(lang)) throw new Error("Invalid lang");
 const t = ui[lang];
 
-// Same content you had, but slightly more professional tone:
 const tiles = [
-  {
-    title: t.about.tiles.travel.title,
-    text: t.about.tiles.travel.text,
-    imgSrc: "/assets/about/about-travel.png",
-  },
-  {
-    title: t.about.tiles.tattoo.title,
-    text: t.about.tiles.tattoo.text,
-    imgSrc: "/assets/about/about-tattoo.png",
-  },
-  {
-    title: t.about.tiles.arq.title,
-    text: t.about.tiles.arq.text,
-    imgSrc: "/assets/about/about-arq.png",
-  },
-  {
-    title: t.about.tiles.read.title,
-    text: t.about.tiles.read.text,
-    imgSrc: "/assets/about/about-read.png",
-  },
-  {
-    title: t.about.tiles.iot.title,
-    text: t.about.tiles.iot.text,
-    imgSrc: "/assets/about/about-iot.png",
-  },
-  {
-    title: t.about.tiles.video.title,
-    text: t.about.tiles.video.text,
-    videoSrc: "/assets/video/about.mp4",
-  },
+  { title: t.about.tiles.travel.title, text: t.about.tiles.travel.text, imgSrc: "/assets/about/about-travel.png" },
+  { title: t.about.tiles.tattoo.title, text: t.about.tiles.tattoo.text, imgSrc: "/assets/about/about-tattoo.png" },
+  { title: t.about.tiles.arq.title,   text: t.about.tiles.arq.text,   imgSrc: "/assets/about/about-arq.png" },
+  { title: t.about.tiles.read.title,  text: t.about.tiles.read.text,  imgSrc: "/assets/about/about-read.png" },
+  { title: t.about.tiles.iot.title,   text: t.about.tiles.iot.text,   imgSrc: "/assets/about/about-iot.png" },
+  { title: t.about.tiles.video.title, text: t.about.tiles.video.text, videoSrc: "/assets/video/about.mp4" },
+];
+
+const chips = [
+  { label: "Architecture → CS", color: "#C96B4A" },
+  { label: "IoT builder",        color: "#8FAF93" },
+  { label: "3 languages",        color: "#C9BF9A" },
+  { label: "Belgium by choice",  color: "rgba(255,255,255,0.45)" },
+  { label: "Thomas More",        color: "rgba(255,255,255,0.45)" },
+];
+
+const timeline = [
+  { year: "2014", label: "Architecture & Urbanism", place: "Lima, Peru",         color: "#C9BF9A" },
+  { year: "2022", label: "New chapter",             place: "Belgium",            color: "#8FAF93" },
+  { year: "2023", label: "Applied Comp. Science",   place: "Thomas More",        color: "#8FAF93" },
+  { year: "2025", label: "IoT Internship",           place: "Mobilab & Care",    color: "#C96B4A" },
 ];
 ---
 
 <BaseLayout lang={lang} title={`${t.nav.about} — Pierina Lopez`}>
   <SiteShell active="about" lang={lang}>
-    <div class="max-w-5xl">
-      <!-- About block -->
+    <div class="max-w-5xl space-y-5">
+
+      <!-- ── BIO CARD ──────────────────────────────────────────────────────── -->
       <section class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">{t.about.title}</h1>
+        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
 
-        <p class="mt-4 text-white/75 leading-relaxed">{t.about.p1}</p>
+          <!-- Monogram -->
+          <div class="shrink-0 h-20 w-20 rounded-2xl flex items-center justify-center"
+               style="background: rgba(201,107,74,0.10); border: 1px solid rgba(201,107,74,0.25);">
+            <span class="text-4xl font-bold" style="color: #C96B4A;">P</span>
+          </div>
 
-        <p class="mt-4 text-white/75 leading-relaxed">{t.about.p2}</p>
+          <!-- Text block -->
+          <div class="flex-1 min-w-0">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-br from-white to-white/55 bg-clip-text text-transparent">
+              {t.about.title}
+            </h1>
+            <p class="mt-4 text-white/65 leading-relaxed text-sm sm:text-base">{t.about.p1}</p>
+            <p class="mt-3 text-white/65 leading-relaxed text-sm sm:text-base">{t.about.p2}</p>
 
+            <!-- Trait chips -->
+            <div class="mt-5 flex flex-wrap gap-2">
+              {chips.map(c => (
+                <span
+                  class="rounded-full px-3 py-1 text-xs font-medium border"
+                  style={`color: ${c.color}; border-color: ${c.color}33; background-color: ${c.color}14;`}
+                >
+                  {c.label}
+                </span>
+              ))}
+            </div>
+
+            <!-- Currently -->
+            <div class="mt-5 rounded-2xl px-4 py-3 flex gap-3 items-start"
+                 style="background: rgba(143,175,147,0.07); border: 1px solid rgba(143,175,147,0.20);">
+              <span class="mt-1 relative flex h-2 w-2 shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                      style="background: #8FAF93;"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full" style="background: #8FAF93;"></span>
+              </span>
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-widest" style="color: #8FAF93;">Currently</span>
+                <p class="mt-0.5 text-sm text-white/60">
+                  Smart home integration internship · Mobilab &amp; Care, Thomas More Kempen
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
-      <!-- My World in Pictures -->
-      <section class="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-        <h2 class="text-center text-2xl sm:text-3xl font-semibold tracking-tight">{t.about.worldTitle}</h2>
-        <div class="mt-8 grid gap-5 sm:grid-cols-2">
-          {tiles.map((tile) => (
-            <WorldTile
+      <!-- ── JOURNEY TIMELINE ───────────────────────────────────────────────── -->
+      <section class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 overflow-x-auto">
+        <h2 class="text-lg font-semibold mb-8">Journey</h2>
+
+        <div class="relative min-w-[440px]">
+          <!-- Connecting line -->
+          <div class="absolute top-[5px] left-6 right-6 h-px" style="background: rgba(255,255,255,0.08);"></div>
+
+          <!-- Nodes -->
+          <div class="relative flex justify-between">
+            {timeline.map((node) => (
+              <div class="flex flex-col items-center gap-2 flex-1 px-2">
+                <!-- Dot -->
+                <div
+                  class="w-3 h-3 rounded-full relative z-10 ring-4"
+                  style={`background: ${node.color}; ring-color: ${node.color}22; box-shadow: 0 0 0 4px ${node.color}20;`}
+                />
+                <span class="text-[11px] font-bold mt-1" style={`color: ${node.color};`}>{node.year}</span>
+                <span class="text-xs font-medium text-white/75 text-center leading-tight">{node.label}</span>
+                <span class="text-[10px] text-white/35 text-center">{node.place}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MY WORLD IN PICTURES ───────────────────────────────────────────── -->
+      <section class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+        <div class="flex items-end justify-between mb-6">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">{t.about.worldTitle}</h2>
+          <span class="text-xs text-white/30 hidden sm:block">hover · tap to explore</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {tiles.map((tile, i) => (
+            <div
+              class:list={["tile-item", i === 0 && "sm:col-span-2"]}
+              style={`--delay: ${i * 90}ms`}
+            >
+              <WorldTile
                 title={tile.title}
                 text={tile.text}
                 imgSrc={tile.imgSrc}
                 videoSrc={tile.videoSrc}
-            />
-            ))}
+                featured={i === 0}
+              />
+            </div>
+          ))}
         </div>
       </section>
+
     </div>
   </SiteShell>
 </BaseLayout>
+
+<style>
+  @keyframes tileReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tile-item {
+    animation: tileReveal 0.5s ease forwards;
+    animation-play-state: paused;
+    animation-delay: var(--delay, 0ms);
+  }
+  .tile-item.visible {
+    animation-play-state: running;
+  }
+</style>
+
+<script>
+  const items = document.querySelectorAll('.tile-item');
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.08 }
+  );
+  items.forEach(el => obs.observe(el));
+</script>
