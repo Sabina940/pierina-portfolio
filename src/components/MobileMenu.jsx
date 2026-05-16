@@ -89,7 +89,8 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
             />
 
             <motion.aside
-              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm border-r border-white/10 bg-[#0F2018] p-5 "
+              className="fixed left-0 top-0 z-[2147483647] h-full w-[86%] max-w-sm border-r border-white/10 p-5"
+              style={{ backgroundColor: '#0F2018' }}
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -30, opacity: 0 }}

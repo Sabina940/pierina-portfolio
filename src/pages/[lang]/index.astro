@@ -21,26 +21,45 @@ const t = ui[lang];
 
 <BaseLayout lang={lang} title="Pierina Lopez — Portfolio">
   <SiteShell active="home" lang={lang}>
+
+    <!-- ── HERO ──────────────────────────────────────────────────────────── -->
     <section class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-10">
       <HeroBg client:load />
 
-      <div class="relative z-10 max-w-3xl">
-        <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-          {t.hero.pill}
-        </p>
+      <!-- Dot grid texture -->
+      <div
+        class="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 22px 22px;"
+      />
 
-        <h1 class="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight">
-          {t.hero.title}
+      <div class="relative z-10 max-w-3xl">
+
+        <!-- Pill badge with pulsing dot -->
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#C96B4A]/30 bg-[#C96B4A]/10 px-3 py-1.5 text-xs text-[#C96B4A] font-medium tracking-wide">
+          <span class="relative flex h-1.5 w-1.5 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C96B4A] opacity-60"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#C96B4A]"></span>
+          </span>
+          {t.hero.pill}
+        </span>
+
+        <!-- Title with gradient -->
+        <h1 class="mt-5 text-4xl sm:text-6xl font-bold tracking-tight leading-[1.1]">
+          <span class="bg-gradient-to-br from-white via-white to-white/50 bg-clip-text text-transparent">
+            {t.hero.title}
+          </span>
         </h1>
 
-        <p class="mt-4 text-white/75 text-base sm:text-lg leading-relaxed">
+        <!-- Body -->
+        <p class="mt-5 max-w-xl text-white/60 text-sm sm:text-base leading-relaxed">
           {t.hero.body}
         </p>
 
-        <div class="mt-6 flex flex-wrap gap-3">
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-wrap gap-3">
           <a
             href={`/${lang}/internship`}
-            class="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition"
+            class="rounded-xl border border-[#C96B4A]/40 bg-[#C96B4A]/15 px-4 py-2 text-sm font-semibold text-[#C96B4A] hover:bg-[#C96B4A]/25 transition"
           >
             {t.hero.cta1}
           </a>
@@ -52,38 +71,102 @@ const t = ui[lang];
           </a>
           <a
             href={`/${lang}/cv`}
-            class="rounded-xl border border-white/15 bg-transparent px-4 py-2 text-sm font-semibold text-white/80 hover:text-white hover:bg-white/5 transition"
+            class="rounded-xl border border-white/10 bg-transparent px-4 py-2 text-sm font-semibold text-white/60 hover:text-white hover:bg-white/5 transition"
           >
             {t.hero.cta3}
           </a>
         </div>
       </div>
 
-      <div class="mt-8 grid gap-3 sm:grid-cols-3">
-        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-          <div class="text-sm font-semibold">{t.cards.cv.title}</div>
-          <div class="mt-1 text-xs text-white/70">{t.cards.cv.body}</div>
+      <!-- Feature cards -->
+      <div class="relative z-10 mt-10 grid gap-3 sm:grid-cols-3">
+
+        <!-- Computer Vision -->
+        <div class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 flex gap-3 hover:border-[#C96B4A]/25 hover:bg-[#C96B4A]/5 transition duration-300">
+          <div class="shrink-0 mt-0.5 rounded-lg bg-[#C96B4A]/15 p-2">
+            <svg class="h-4 w-4 text-[#C96B4A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold">{t.cards.cv.title}</div>
+            <div class="mt-1 text-xs text-white/55 leading-relaxed">{t.cards.cv.body}</div>
+          </div>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-          <div class="text-sm font-semibold">{t.cards.auto.title}</div>
-          <div class="mt-1 text-xs text-white/70">{t.cards.auto.body}</div>
+
+        <!-- Automation -->
+        <div class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 flex gap-3 hover:border-[#8FAF93]/25 hover:bg-[#8FAF93]/5 transition duration-300">
+          <div class="shrink-0 mt-0.5 rounded-lg bg-[#8FAF93]/15 p-2">
+            <svg class="h-4 w-4 text-[#8FAF93]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold">{t.cards.auto.title}</div>
+            <div class="mt-1 text-xs text-white/55 leading-relaxed">{t.cards.auto.body}</div>
+          </div>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-          <div class="text-sm font-semibold">{t.cards.iot.title}</div>
-          <div class="mt-1 text-xs text-white/70">{t.cards.iot.body}</div>
+
+        <!-- IoT -->
+        <div class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 flex gap-3 hover:border-[#C9BF9A]/25 hover:bg-[#C9BF9A]/5 transition duration-300">
+          <div class="shrink-0 mt-0.5 rounded-lg bg-[#C9BF9A]/15 p-2">
+            <svg class="h-4 w-4 text-[#C9BF9A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <line x1="12" y1="20" x2="12.01" y2="20"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold">{t.cards.iot.title}</div>
+            <div class="mt-1 text-xs text-white/55 leading-relaxed">{t.cards.iot.body}</div>
+          </div>
         </div>
+
       </div>
     </section>
 
-    <section class="mt-10 grid gap-6 lg:grid-cols-2">
+    <!-- ── BOTTOM GRID ────────────────────────────────────────────────────── -->
+    <div class="mt-5 grid gap-5 sm:grid-cols-2">
+
+      <!-- What you'll find -->
       <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h2 class="text-xl font-semibold">{t.sections.find}</h2>
-        <ul class="mt-4 space-y-2 text-white/75">
-          {t.sections.findBullets.map((b: string) => <li>• {b}</li>)}
+        <h2 class="text-lg font-semibold">{t.sections.find}</h2>
+        <ul class="mt-5 space-y-4">
+          {t.sections.findBullets.map((b: string) => (
+            <li class="flex items-start gap-3 text-sm text-white/65 leading-relaxed">
+              <span class="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#C96B4A]" />
+              {b}
+            </li>
+          ))}
         </ul>
       </div>
 
-      
-    </section>
+      <!-- At a glance -->
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 class="text-lg font-semibold">At a glance</h2>
+        <div class="mt-5 grid grid-cols-2 gap-3">
+          <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-center">
+            <div class="text-2xl font-bold text-[#C96B4A]">5+</div>
+            <div class="text-[10px] text-white/45 mt-1 uppercase tracking-widest">Projects</div>
+          </div>
+          <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-center">
+            <div class="text-2xl font-bold text-[#8FAF93]">3</div>
+            <div class="text-[10px] text-white/45 mt-1 uppercase tracking-widest">Languages</div>
+          </div>
+          <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-center">
+            <div class="text-2xl font-bold text-[#C9BF9A]">AEC</div>
+            <div class="text-[10px] text-white/45 mt-1 uppercase tracking-widest">Background</div>
+          </div>
+          <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-center">
+            <div class="text-2xl font-bold text-white/75">IoT</div>
+            <div class="text-[10px] text-white/45 mt-1 uppercase tracking-widest">Focus</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </SiteShell>
 </BaseLayout>
