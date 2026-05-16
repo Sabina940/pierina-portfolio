@@ -77,27 +77,27 @@ export const ui: Record<Lang, UI> = {
       tiles: {
         travel: {
           title: "Travel",
-          text: "Travel is part of my lifestyle, from weekend bike rides to European adventures, I explore cultures and connect with nature.",
+          text: "Bike travel is the best — budget-friendly and the scenery is unmatched. I'll take a plane if the place is too far, but the goal is always the same: connecting with other cultures and living within different societies. Not the tourist experience — the local one. Finding spots only locals know, connecting with nature, getting lost in the mountains.",
         },
         tattoo: {
           title: "Art & tattoo design",
-          text: "Art is where I find flow, through tattoo design and sketching, I channel creativity and emotion into visual forms.",
+          text: "Creativity was always a passion, even before art classes gave it a name. Finding my way to tattooing was the perfect path — making art last a lifetime, on skin, with meaning. Every design is a small story that stays with someone forever.",
         },
         arq: {
           title: "Architecture mindset",
-          text: "Once an architecture student, I still love beautiful structures, design logic, and cozy coffee-shop coding sessions.",
+          text: "Connecting art and structure. Once an architect, always an architect. Trying to understand how people live within different types of buildings is something I learned to love, and that way of thinking never really leaves you — it just finds new problems to solve.",
         },
         read: {
           title: "Reading & writing",
-          text: "Reading and writing have always been my companions, a way to reflect, imagine, and document my journey.",
+          text: "Imagining other people's lives in different buildings and environments — I did that from school. Writing was always at my fingertips. One of my dreams is to write a book, one that inspires people the way so many books have inspired me.",
         },
         iot: {
           title: "IoT & prototyping",
-          text: "The magic of IoT fascinates me, coding, sensors, and connected devices make ideas come to life.",
+          text: "From code to devices — I love the magic of it. Making things work with a few letters on a screen. The moment a sensor clicks or a light responds to an automation, something clicks in my head too. That connection between the digital and the physical is what keeps me building.",
         },
         video: {
           title: "A glimpse of my world",
-          text: "A short video from my daily life, I like documenting progress and the creative process along the way.",
+          text: "Soldering a sensor, configuring a board, connecting the physical to the digital — this is where I feel most in flow. Working with my hands while thinking in code is exactly the kind of problem I want to keep solving.",
         },
       },
     },
@@ -137,27 +137,27 @@ export const ui: Record<Lang, UI> = {
       tiles: {
       travel: {
         title: "Viajes",
-        text: "Viajar es parte de mi estilo de vida, desde rutas en bici los fines de semana hasta aventuras por Europa, exploro culturas y conecto con la naturaleza.",
+        text: "Viajar en bici es lo mejor — económico y con paisajes increíbles. Tomo un avión si el lugar está muy lejos, pero el objetivo siempre es el mismo: conectar con otras culturas y vivir dentro de diferentes sociedades. No la experiencia turística, sino la local. Encontrar lugares que solo conocen los de allí, conectar con la naturaleza, perderse en las montañas.",
       },
       tattoo: {
         title: "Arte y diseño de tatuajes",
-        text: "El arte es donde encuentro flow, con diseño de tatuajes y dibujo, canalizo creatividad y emoción en formas visuales.",
+        text: "La creatividad siempre fue una pasión, incluso antes de que las clases de arte le dieran nombre. Encontrar mi camino en el tatuaje fue el paso perfecto — hacer que el arte dure toda una vida, en la piel, con significado. Cada diseño es una pequeña historia que acompaña a alguien para siempre.",
       },
       arq: {
         title: "Mentalidad arquitectónica",
-        text: "Aunque estudié arquitectura, sigo amando las estructuras bellas, la lógica de diseño y las sesiones de código en cafeterías.",
+        text: "Conectar el arte con la estructura. Una vez arquitecta, siempre arquitecta. Intentar entender cómo vive la gente en distintos tipos de edificios es algo que aprendí a amar, y esa forma de pensar nunca te abandona del todo — simplemente encuentra nuevos problemas que resolver.",
       },
       read: {
         title: "Lectura y escritura",
-        text: "Leer y escribir siempre han sido mis compañeros, una forma de reflexionar, imaginar y documentar mi camino.",
+        text: "Imaginar la vida de otras personas en distintos edificios y entornos fue algo que hice desde la escuela. Escribir siempre estuvo en la punta de mis dedos. Uno de mis sueños es escribir un libro, uno que inspire a las personas como tantos libros me han inspirado a mí.",
       },
       iot: {
         title: "IoT y prototipado",
-        text: "La magia del IoT me fascina, código, sensores y dispositivos conectados hacen que mis ideas cobren vida.",
+        text: "Del código a los dispositivos — amo la magia de eso. Hacer que las cosas funcionen con unas pocas letras en la pantalla. El momento en que un sensor responde o una luz reacciona a una automatización, algo también hace clic en mi cabeza. Esa conexión entre lo digital y lo físico es lo que me impulsa a seguir construyendo.",
       },
       video: {
         title: "Un vistazo a mi mundo",
-        text: "Un video corto de mi día a día, me gusta documentar el progreso y el proceso creativo.",
+        text: "Soldar un sensor, configurar una placa, conectar lo físico con lo digital — aquí es donde más me siento en flow. Trabajar con las manos mientras pienso en código es exactamente el tipo de problema que quiero seguir resolviendo.",
       },
     },
     },
@@ -196,27 +196,27 @@ export const ui: Record<Lang, UI> = {
       tiles: {
       travel: {
         title: "Reizen",
-        text: "Reizen hoort bij mijn levensstijl, van weekendfietstochten tot Europese avonturen. Ik ontdek culturen en kom tot rust in de natuur.",
+        text: "Fietsen is de beste manier om te reizen — budgetvriendelijk en met prachtige landschappen. Voor verre bestemmingen neem ik een vliegtuig, maar het doel blijft hetzelfde: verbinding maken met andere culturen en leven in andere samenlevingen. Niet de toeristische ervaring, maar de lokale. Plekken ontdekken die alleen locals kennen, de natuur in, verdwalen in de bergen.",
       },
       tattoo: {
         title: "Kunst & tattoo-ontwerp",
-        text: "In kunst vind ik flow, via tattoo-ontwerp en schetsen geef ik creativiteit en emotie vorm.",
+        text: "Creativiteit was altijd een passie, al vóór de kunstlessen het een naam gaven. Mijn weg vinden in tatoeages was het perfecte pad — kunst laten duren voor een heel leven, op de huid, met betekenis. Elk ontwerp is een klein verhaal dat iemand voor altijd bij zich draagt.",
       },
       arq: {
         title: "Architectuur mindset",
-        text: "Als ex-architectuurstudent hou ik nog steeds van mooie structuren, ontwerp-logica en gezellige coffee-shop coding sessies.",
+        text: "Kunst en structuur verbinden. Eens een architect, altijd een architect. Begrijpen hoe mensen leven in verschillende soorten gebouwen is iets dat ik leerde liefhebben, en die manier van denken verlaat je nooit echt — ze vindt gewoon nieuwe problemen om op te lossen.",
       },
       read: {
         title: "Lezen & schrijven",
-        text: "Lezen en schrijven zijn altijd mijn vaste companions geweest, om te reflecteren, te verbeelden en mijn traject te documenteren.",
+        text: "Andermans leven voorstellen in verschillende gebouwen en omgevingen — dat deed ik al op school. Schrijven lag altijd op het puntje van mijn vingers. Een van mijn dromen is een boek schrijven, een dat mensen inspireert zoals zoveel boeken mij hebben geïnspireerd.",
       },
       iot: {
         title: "IoT & prototyping",
-        text: "De magie van IoT fascineert me, code, sensoren en connected devices brengen ideeën tot leven.",
+        text: "Van code naar apparaten — ik hou van de magie ervan. Dingen laten werken met een paar letters op een scherm. Het moment dat een sensor reageert of een lamp zich aanpast aan een automatisering: dan klikt er ook iets in mijn hoofd. Die verbinding tussen het digitale en het fysieke is wat me blijft motiveren.",
       },
       video: {
         title: "Een kijkje in mijn wereld",
-        text: "Een korte video uit mijn dagelijks leven, ik documenteer graag vooruitgang en het creatieve proces.",
+        text: "Een sensor solderen, een board configureren, het fysieke verbinden met het digitale — hier voel ik me het meest in flow. Werken met mijn handen terwijl ik in code denk is precies het soort probleem dat ik wil blijven oplossen.",
       },
     },
     },
