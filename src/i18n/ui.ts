@@ -81,6 +81,23 @@ export type UI = {
       autocad: { title: string; subtitle: string };
     };
   };
+  internship: {
+    title: string;
+    subtitle: string;
+    completedLabel: string;
+    aboutLabel: string;
+    stackLabel: string;
+    galleryLabel: string;
+    supervisorsLabel: string;
+    videoCaption: string;
+    context: string;
+    stats: Array<{ val: string; lbl: string }>;
+    tabs: {
+      role:    { label: string; items: string[] };
+      built:   { label: string; items: string[] };
+      learned: { label: string; items: string[] };
+    };
+  };
 };
 
 export const ui: Record<Lang, UI> = {
@@ -179,6 +196,56 @@ export const ui: Record<Lang, UI> = {
         cs:      { title: "Applied Computer Science",        subtitle: "Thomas More University of Applied Sciences — Belgium" },
         arch:    { title: "Architecture and Urban Planning", subtitle: "Cesar Vallejo University — Peru" },
         autocad: { title: "AutoCAD Architecture Cert.",      subtitle: "Cesar Vallejo University — Peru" },
+      },
+    },
+    internship: {
+      title: "Smart Home Integration",
+      subtitle: "IoT prototype for safer night-time routines for older adults · Mobilab & Care",
+      completedLabel: "Completed",
+      aboutLabel: "About",
+      stackLabel: "Stack",
+      galleryLabel: "Gallery",
+      supervisorsLabel: "Supervisors",
+      videoCaption: "Smart Home Demo — night path · bathroom check-in · help mode · adaptive learning",
+      context: "Prototype developed at Mobilab & Care (Thomas More Kempen) to support safer night-time routines for older adults living independently at home. Built on a locally controlled Home Assistant platform — no cloud dependency for safety functions. The Experience Lab apartment served as a realistic domestic test environment.",
+      stats: [
+        { val: "26", lbl: "Automations" },
+        { val: "5",  lbl: "Zones" },
+        { val: "0",  lbl: "Cloud deps" },
+        { val: "4",  lbl: "Deliverables" },
+        { val: "13", lbl: "Weeks" },
+      ],
+      tabs: {
+        role: {
+          label: "My Role",
+          items: [
+            "Designed the full 5-layer system architecture — control, integration, input, output, and interface.",
+            "Built 26 Home Assistant automations covering night path lighting, bathroom check-in, help mode escalation, and adaptive scheduling.",
+            "Developed a Python / AppDaemon component that analyses night mode history and proposes schedule updates for user approval.",
+            "Configured Alexa voice control via a locally hosted Matter Hub bridge — 6 routines covering all key scenarios.",
+            "Produced 4 documentation deliverables for future reuse: realization document, user manual, installation guide, and maintenance manual.",
+          ],
+        },
+        built: {
+          label: "What Was Built",
+          items: [
+            "Night path lighting — bedroom to bathroom at 15–25% brightness and 2000–2400 K, triggered passively by motion.",
+            "Bathroom check-in flow — 5-minute inactivity timer escalates to a visual + audio nudge, then to full help mode if unanswered.",
+            "Help mode — every light to 80%, Nuki lock opens automatically, Telegram and WhatsApp alerts fire simultaneously.",
+            "Adaptive learning component — analyses activation history over a configurable window and proposes schedule updates.",
+            "4-view dashboard — daily control (Thuis), recommendations (Helper), spatial testing (Plan), room inspection (Gebied).",
+          ],
+        },
+        learned: {
+          label: "What I Learned",
+          items: [
+            "Safety-critical automations need humane escalation — the resident must have agency at every step, including from the floor.",
+            "Network-dependent projects require resolving institutional dependencies early, not as a late troubleshooting step.",
+            "Research-driven design: every brightness value, timer, and colour temperature was justified by peer-reviewed literature.",
+            "Writing for four different audiences simultaneously requires four fundamentally different registers and levels of detail.",
+            "Hardware capacity matters from the start — a Pi 3B ceiling forced a mid-project migration to Pi 5 with full backup restore.",
+          ],
+        },
       },
     },
   },
@@ -280,6 +347,56 @@ export const ui: Record<Lang, UI> = {
         autocad: { title: "Certificación AutoCAD Architecture", subtitle: "Universidad Cesar Vallejo — Perú" },
       },
     },
+    internship: {
+      title: "Integración de Hogar Inteligente",
+      subtitle: "Prototipo IoT para rutinas nocturnas más seguras para adultos mayores · Mobilab & Care",
+      completedLabel: "Completado",
+      aboutLabel: "Sobre el proyecto",
+      stackLabel: "Tecnologías",
+      galleryLabel: "Galería",
+      supervisorsLabel: "Supervisores",
+      videoCaption: "Demo Hogar Inteligente — recorrido nocturno · check-in baño · modo ayuda · aprendizaje adaptativo",
+      context: "Prototipo desarrollado en Mobilab & Care (Thomas More Kempen) para apoyar rutinas nocturnas más seguras en adultos mayores que viven de forma independiente. Construido sobre una plataforma Home Assistant controlada localmente — sin dependencia de la nube para las funciones de seguridad. El apartamento del Experience Lab sirvió como entorno doméstico de prueba realista.",
+      stats: [
+        { val: "26", lbl: "Automatizaciones" },
+        { val: "5",  lbl: "Zonas" },
+        { val: "0",  lbl: "Deps. nube" },
+        { val: "4",  lbl: "Entregables" },
+        { val: "13", lbl: "Semanas" },
+      ],
+      tabs: {
+        role: {
+          label: "Mi Rol",
+          items: [
+            "Diseñé la arquitectura completa del sistema de 5 capas — control, integración, entrada, salida e interfaz.",
+            "Construí 26 automatizaciones de Home Assistant que cubren iluminación del camino nocturno, check-in de baño, escalada del modo ayuda y programación adaptativa.",
+            "Desarrollé un componente Python/AppDaemon que analiza el historial del modo nocturno y propone actualizaciones de horario para aprobación del usuario.",
+            "Configuré el control de voz Alexa mediante un bridge Matter Hub alojado localmente — 6 rutinas que cubren todos los escenarios clave.",
+            "Produje 4 entregables de documentación para reutilización futura: documento de realización, manual de usuario, guía de instalación y manual de mantenimiento.",
+          ],
+        },
+        built: {
+          label: "Qué Construí",
+          items: [
+            "Iluminación del camino nocturno — dormitorio al baño al 15–25% de brillo y 2000–2400 K, activada pasivamente por movimiento.",
+            "Flujo de check-in de baño — temporizador de 5 minutos de inactividad escala a recordatorio visual + sonoro, luego a modo ayuda completo si no hay respuesta.",
+            "Modo ayuda — todas las luces al 80%, la cerradura Nuki abre automáticamente, alertas de Telegram y WhatsApp se envían simultáneamente.",
+            "Componente de aprendizaje adaptativo — analiza el historial de activación en una ventana configurable y propone actualizaciones de horario.",
+            "Panel de control de 4 vistas — control diario (Thuis), recomendaciones (Helper), pruebas espaciales (Plan), inspección de habitaciones (Gebied).",
+          ],
+        },
+        learned: {
+          label: "Qué Aprendí",
+          items: [
+            "Las automatizaciones críticas para la seguridad necesitan una escalada humana — el residente debe tener agencia en cada paso, incluso desde el suelo.",
+            "Los proyectos dependientes de la red requieren resolver dependencias institucionales desde el principio, no como paso tardío de solución de problemas.",
+            "Diseño basado en investigación: cada valor de brillo, temporizador y temperatura de color fue justificado por literatura científica revisada por pares.",
+            "Escribir para cuatro audiencias diferentes simultáneamente requiere cuatro registros y niveles de detalle fundamentalmente distintos.",
+            "La capacidad del hardware importa desde el inicio — un techo de Pi 3B obligó a una migración a Pi 5 a mitad del proyecto con restauración completa de copia de seguridad.",
+          ],
+        },
+      },
+    },
   },
 
   nl: {
@@ -377,6 +494,56 @@ export const ui: Record<Lang, UI> = {
         cs:      { title: "Toegepaste Informatica",             subtitle: "Thomas More Hogeschool — België" },
         arch:    { title: "Architectuur en Stedenbouw",         subtitle: "Cesar Vallejo Universiteit — Peru" },
         autocad: { title: "AutoCAD Architecture Certificering", subtitle: "Cesar Vallejo Universiteit — Peru" },
+      },
+    },
+    internship: {
+      title: "Smart Home Integratie",
+      subtitle: "IoT-prototype voor veiligere nachtelijke routines voor ouderen · Mobilab & Care",
+      completedLabel: "Afgerond",
+      aboutLabel: "Over het project",
+      stackLabel: "Technologieën",
+      galleryLabel: "Galerij",
+      supervisorsLabel: "Begeleiders",
+      videoCaption: "Smart Home Demo — nachtpad · badkamer check-in · hulpmodus · adaptief leren",
+      context: "Prototype ontwikkeld bij Mobilab & Care (Thomas More Kempen) ter ondersteuning van veiligere nachtelijke routines voor ouderen die zelfstandig wonen. Gebouwd op een lokaal beheerde Home Assistant-omgeving — geen cloudafhankelijkheid voor veiligheidsfuncties. Het Experience Lab-appartement fungeerde als realistisch testdomein.",
+      stats: [
+        { val: "26", lbl: "Automatiseringen" },
+        { val: "5",  lbl: "Zones" },
+        { val: "0",  lbl: "Cloud-afh." },
+        { val: "4",  lbl: "Deliverables" },
+        { val: "13", lbl: "Weken" },
+      ],
+      tabs: {
+        role: {
+          label: "Mijn Rol",
+          items: [
+            "Ontwierp de volledige 5-laags systeemarchitectuur — besturing, integratie, invoer, uitvoer en interface.",
+            "Bouwde 26 Home Assistant-automatiseringen voor nachtpadverlichting, badkamer check-in, hulpmodus-escalatie en adaptieve planning.",
+            "Ontwikkelde een Python/AppDaemon-component dat de nachtmodus-geschiedenis analyseert en schema-updates voorstelt ter goedkeuring van de gebruiker.",
+            "Configureerde Alexa-spraakbediening via een lokaal gehoste Matter Hub bridge — 6 routines voor alle sleutelscenario's.",
+            "Produceerde 4 documentatiedeliverables voor toekomstig hergebruik: realisatiedocument, gebruikershandleiding, installatiegids en onderhoudshandleiding.",
+          ],
+        },
+        built: {
+          label: "Wat Gebouwd",
+          items: [
+            "Nachtpadverlichting — slaapkamer naar badkamer op 15–25% helderheid en 2000–2400 K, passief geactiveerd door beweging.",
+            "Badkamer check-in stroom — 5 minuten inactiviteitsklok escaleert naar visueel + audiosignaal, daarna volledige hulpmodus als er geen reactie is.",
+            "Hulpmodus — alle lampen op 80%, Nuki-slot opent automatisch, Telegram en WhatsApp-meldingen worden gelijktijdig verzonden.",
+            "Adaptief leercomponent — analyseert activeringsgeschiedenis over een configureerbaar venster en stelt schema-updates voor.",
+            "Dashboard met 4 weergaven — dagelijks beheer (Thuis), aanbevelingen (Helper), ruimtelijk testen (Plan), kamerinspectie (Gebied).",
+          ],
+        },
+        learned: {
+          label: "Wat Geleerd",
+          items: [
+            "Veiligheidskritieke automatiseringen vereisen humane escalatie — de bewoner moet in elke stap handelingsvermogen hebben, ook vanaf de vloer.",
+            "Netwerkafhankelijke projecten vereisen dat institutionele afhankelijkheden vroeg worden opgelost, niet als late probleemoplossingsstap.",
+            "Onderzoeksgestuurd ontwerp: elke helderheidswaarde, timer en kleurtemperatuur werd onderbouwd door peer-reviewed literatuur.",
+            "Schrijven voor vier verschillende doelgroepen tegelijkertijd vereist vier fundamenteel verschillende registers en detailniveaus.",
+            "Hardwarecapaciteit is van het begin af aan belangrijk — een Pi 3B-limiet dwong tot een migratie naar Pi 5 midden in het project met volledig back-upherstel.",
+          ],
+        },
       },
     },
   },

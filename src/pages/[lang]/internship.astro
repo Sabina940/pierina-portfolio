@@ -17,7 +17,7 @@ const t = ui[lang];
 <BaseLayout lang={lang} title={`${t.nav.internship} — Pierina Lopez`}>
   <SiteShell active="internship" lang={lang}>
     <div class="max-w-6xl">
-      <InternshipDashboard client:load />
+      <InternshipDashboard client:load t={t} />
     </div>
   </SiteShell>
 </BaseLayout>
