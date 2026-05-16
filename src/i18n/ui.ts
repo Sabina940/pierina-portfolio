@@ -41,6 +41,46 @@ export type UI = {
       video: { title: string; text: string };
     };
   };
+  cv: {
+    headline: string;
+    summary: string;
+    overview: string;
+    experience: string;
+    skills: string;
+    volunteering: string;
+    education: string;
+    languagesTitle: string;
+    atAGlance: string;
+    clickForDetails: string;
+    detailsBtn: string;
+    activeLabel: string;
+    downloadBtn: string;
+    softSkillsTitle: string;
+    statLanguages: string;
+    statWorkExp: string;
+    statBackground: string;
+    statFocus: string;
+    skillWeb: string;
+    skillData: string;
+    skillAec: string;
+    overviewBullets: string[];
+    softSkills: string[];
+    languages: Array<{ name: string; level: string }>;
+    exp: {
+      horeca:    { title: string; subtitle: string; bullets: string[] };
+      warehouse: { title: string; subtitle: string; bullets: string[] };
+      sales:     { title: string; subtitle: string; bullets: string[] };
+      aec:       { title: string; subtitle: string; bullets: string[] };
+    };
+    vol: {
+      barista: { title: string; subtitle: string; bullets: string[] };
+    };
+    edu: {
+      cs:      { title: string; subtitle: string };
+      arch:    { title: string; subtitle: string };
+      autocad: { title: string; subtitle: string };
+    };
+  };
 };
 
 export const ui: Record<Lang, UI> = {
@@ -101,7 +141,46 @@ export const ui: Record<Lang, UI> = {
         },
       },
     },
-    
+    cv: {
+      headline: "Applied Computer Science student • Architecture background • AEC → Tech",
+      summary: "Multilingual student with strong IT foundations, customer service experience, and a practical builder mindset — web apps, dashboards, and prototypes.",
+      overview: "Overview", experience: "Experience", skills: "Skills", volunteering: "Volunteering", education: "Education",
+      languagesTitle: "Languages", atAGlance: "At a glance", clickForDetails: "Click any card for details",
+      detailsBtn: "details →", activeLabel: "Active", downloadBtn: "Download CV", softSkillsTitle: "Soft skills",
+      statLanguages: "Languages", statWorkExp: "Work exp.", statBackground: "Background", statFocus: "2025 focus",
+      skillWeb: "Web Dev", skillData: "Data & Tools", skillAec: "AEC & Design",
+      overviewBullets: [
+        "Full-stack basics (Laravel + Livewire) + Qlik Sense dashboards",
+        "Strong communication + customer-facing background",
+        "AEC mindset: documentation, QA, coordination → tech projects",
+      ],
+      softSkills: [
+        "Analytical problem-solving & debugging",
+        "Teamwork & collaboration (Agile / Scrum)",
+        "Adaptability & eagerness to learn",
+        "Clear communication — technical & non-technical",
+        "Time management, ownership, reliable on deliverables",
+      ],
+      languages: [
+        { name: "Spanish", level: "Native" },
+        { name: "English", level: "Fluent" },
+        { name: "Dutch",   level: "Basic (learning)" },
+      ],
+      exp: {
+        horeca:    { title: "Bartender / Waiter (Student jobs)", subtitle: "Post Restaurant, VOLT, Irish Pub — Belgium", bullets: ["Delivered attentive service in busy, high-end environments; managed bar + table orders.", "Prepared cocktails and beverages to house standards and customer preferences.", "Monitored stock levels and supported hygiene/safety standards."] },
+        warehouse: { title: "Operations & Warehouse Assistant", subtitle: "Distrilog, Beyers, Greenyard — Belgium", bullets: ["Packed, sorted, and prepared high volumes of products for shipment.", "Operated pallet stacking/wrapping equipment and followed safety procedures.", "Supported logistics workflows by keeping workstations clean and organized."] },
+        sales:     { title: "Customer Service & Sales Representative", subtitle: "Teleperformance, Los Portales, Pet Center — Peru & Remote", bullets: ["Resolved customer inquiries and complaints, aiming for high satisfaction.", "Used upselling/cross-selling to increase sales and customer loyalty.", "Handled payments and maintained accurate records in fast-paced environments."] },
+        aec:       { title: "Architecture & Urban Planning Assistant", subtitle: "WAO, TEKTUM, IMP, Municipality of Puente Piedra — Peru", bullets: ["Produced architectural + urban-planning drawings in AutoCAD/Revit and BIM workflows.", "Supported research, data analysis, and preparation of presentations.", "Assisted with site inspections, documentation, cost estimates, and coordination."] },
+      },
+      vol: {
+        barista: { title: "Volunteer Barista", subtitle: "The Big C — Belgium", bullets: ["Prepared and served beverages while supporting a welcoming community space.", "Handled payments and maintained a clean, safe working area."] },
+      },
+      edu: {
+        cs:      { title: "Applied Computer Science",        subtitle: "Thomas More University of Applied Sciences — Belgium" },
+        arch:    { title: "Architecture and Urban Planning", subtitle: "Cesar Vallejo University — Peru" },
+        autocad: { title: "AutoCAD Architecture Cert.",      subtitle: "Cesar Vallejo University — Peru" },
+      },
+    },
   },
 
   es: {
@@ -161,6 +240,46 @@ export const ui: Record<Lang, UI> = {
       },
     },
     },
+    cv: {
+      headline: "Estudiante de Informática Aplicada • Arquitectura • AEC → Tech",
+      summary: "Estudiante multilingüe con sólidas bases en IT, experiencia en atención al cliente y mentalidad práctica — apps web, dashboards y prototipos.",
+      overview: "Resumen", experience: "Experiencia", skills: "Habilidades", volunteering: "Voluntariado", education: "Educación",
+      languagesTitle: "Idiomas", atAGlance: "De un vistazo", clickForDetails: "Haz clic en cualquier tarjeta",
+      detailsBtn: "detalles →", activeLabel: "Activo", downloadBtn: "Descargar CV", softSkillsTitle: "Habilidades blandas",
+      statLanguages: "Idiomas", statWorkExp: "Exp. laboral", statBackground: "Trasfondo", statFocus: "Enfoque 2025",
+      skillWeb: "Desarrollo Web", skillData: "Datos y Herramientas", skillAec: "AEC y Diseño",
+      overviewBullets: [
+        "Base full-stack (Laravel + Livewire) + dashboards en Qlik Sense",
+        "Sólida comunicación y experiencia en atención al cliente",
+        "Mentalidad AEC: documentación, QA, coordinación → proyectos tech",
+      ],
+      softSkills: [
+        "Resolución analítica de problemas y depuración",
+        "Trabajo en equipo y colaboración (Agile / Scrum)",
+        "Adaptabilidad y ganas de aprender",
+        "Comunicación clara — técnica y no técnica",
+        "Gestión del tiempo, responsabilidad, fiabilidad en entregas",
+      ],
+      languages: [
+        { name: "Español",    level: "Nativo" },
+        { name: "Inglés",     level: "Fluido" },
+        { name: "Neerlandés", level: "Básico (aprendiendo)" },
+      ],
+      exp: {
+        horeca:    { title: "Barman / Camarera (trabajos de estudiante)", subtitle: "Post Restaurant, VOLT, Irish Pub — Bélgica", bullets: ["Brindé servicio atento en entornos de alta demanda; gestioné pedidos de barra y mesa.", "Preparé cócteles y bebidas según estándares del local y preferencias del cliente.", "Controlé niveles de stock y apoyé en normas de higiene y seguridad."] },
+        warehouse: { title: "Asistente de Operaciones y Almacén", subtitle: "Distrilog, Beyers, Greenyard — Bélgica", bullets: ["Empaqueté, clasificé y preparé grandes volúmenes de productos para envío.", "Operé equipos de apilado y enfardado de palés siguiendo procedimientos de seguridad.", "Apoyé flujos logísticos manteniendo los puestos de trabajo limpios y organizados."] },
+        sales:     { title: "Representante de Atención al Cliente y Ventas", subtitle: "Teleperformance, Los Portales, Pet Center — Perú y Remoto", bullets: ["Resolví consultas y quejas de clientes buscando alta satisfacción.", "Apliqué upselling/cross-selling para aumentar ventas y fidelidad.", "Gestioné pagos y mantuve registros precisos en entornos de alta demanda."] },
+        aec:       { title: "Asistente de Arquitectura y Urbanismo", subtitle: "WAO, TEKTUM, IMP, Municipalidad de Puente Piedra — Perú", bullets: ["Elaboré planos arquitectónicos y urbanísticos en AutoCAD/Revit con flujos BIM.", "Apoyé investigación, análisis de datos y preparación de presentaciones.", "Asistí en inspecciones de obra, documentación, presupuestos y coordinación."] },
+      },
+      vol: {
+        barista: { title: "Barista Voluntaria", subtitle: "The Big C — Bélgica", bullets: ["Preparé y serví bebidas apoyando un espacio comunitario acogedor.", "Gestioné pagos y mantuve una zona de trabajo limpia y segura."] },
+      },
+      edu: {
+        cs:      { title: "Informática Aplicada",               subtitle: "Thomas More University of Applied Sciences — Bélgica" },
+        arch:    { title: "Arquitectura y Urbanismo",           subtitle: "Universidad Cesar Vallejo — Perú" },
+        autocad: { title: "Certificación AutoCAD Architecture", subtitle: "Universidad Cesar Vallejo — Perú" },
+      },
+    },
   },
 
   nl: {
@@ -219,6 +338,46 @@ export const ui: Record<Lang, UI> = {
         text: "Een sensor solderen, een board configureren, het fysieke verbinden met het digitale — hier voel ik me het meest in flow. Werken met mijn handen terwijl ik in code denk is precies het soort probleem dat ik wil blijven oplossen.",
       },
     },
+    },
+    cv: {
+      headline: "Student Toegepaste Informatica • Architectuur achtergrond • AEC → Tech",
+      summary: "Meertalige student met sterke IT-basis, ervaring in klantenservice en een praktische bouwmentaliteit — web apps, dashboards en prototypes.",
+      overview: "Overzicht", experience: "Ervaring", skills: "Vaardigheden", volunteering: "Vrijwilligerswerk", education: "Opleiding",
+      languagesTitle: "Talen", atAGlance: "In één oogopslag", clickForDetails: "Klik op een kaart voor details",
+      detailsBtn: "details →", activeLabel: "Actief", downloadBtn: "Download CV", softSkillsTitle: "Soft skills",
+      statLanguages: "Talen", statWorkExp: "Werkervaring", statBackground: "Achtergrond", statFocus: "Focus 2025",
+      skillWeb: "Web Dev", skillData: "Data & Tools", skillAec: "AEC & Ontwerp",
+      overviewBullets: [
+        "Full-stack basis (Laravel + Livewire) + Qlik Sense dashboards",
+        "Sterke communicatie + klantgerichte achtergrond",
+        "AEC-mindset: documentatie, QA, coördinatie → tech projecten",
+      ],
+      softSkills: [
+        "Analytisch probleemoplossen & debuggen",
+        "Teamwork & samenwerking (Agile / Scrum)",
+        "Aanpassingsvermogen & leergierigheid",
+        "Heldere communicatie — technisch & niet-technisch",
+        "Tijdsbeheer, verantwoordelijkheid, betrouwbaar op deadlines",
+      ],
+      languages: [
+        { name: "Spaans",     level: "Moedertaal" },
+        { name: "Engels",     level: "Vloeiend" },
+        { name: "Nederlands", level: "Basis (lerende)" },
+      ],
+      exp: {
+        horeca:    { title: "Barman / Kelner (studentenjobs)", subtitle: "Post Restaurant, VOLT, Irish Pub — België", bullets: ["Attente service in drukke, hoogwaardige omgevingen; beheerde bar- en tafelbestellingen.", "Bereidde cocktails en dranken volgens huisstandaarden en klantwensen.", "Bewaakte voorraadniveaus en ondersteunde hygiëne- en veiligheidsnormen."] },
+        warehouse: { title: "Operationeel & Magazijnmedewerker", subtitle: "Distrilog, Beyers, Greenyard — België", bullets: ["Verpakte, sorteerde en bereidde grote hoeveelheden producten voor verzending.", "Bediende palletstapel- en wikkelmachines en volgde veiligheidsprocedures.", "Ondersteunde logistieke workflows door werkstations schoon en georganiseerd te houden."] },
+        sales:     { title: "Klantenservice & Verkoopmedewerker", subtitle: "Teleperformance, Los Portales, Pet Center — Peru & Remote", bullets: ["Loste vragen en klachten van klanten op met oog op hoge tevredenheid.", "Gebruikte upselling/cross-selling om verkoop en klantloyaliteit te verhogen.", "Verwerkte betalingen en hield nauwkeurige administratie bij."] },
+        aec:       { title: "Medewerker Architectuur & Stedenbouw", subtitle: "WAO, TEKTUM, IMP, Gemeente Puente Piedra — Peru", bullets: ["Produceerde architecturale en stedenbouwkundige tekeningen in AutoCAD/Revit en BIM-workflows.", "Ondersteunde onderzoek, gegevensanalyse en voorbereiding van presentaties.", "Assisteerde bij site-inspecties, documentatie, kostenramingen en coördinatie."] },
+      },
+      vol: {
+        barista: { title: "Vrijwilliger Barista", subtitle: "The Big C — België", bullets: ["Bereidde en serveerde dranken in een gastvrije gemeenschapsruimte.", "Verwerkte betalingen en hield de werkruimte schoon en veilig."] },
+      },
+      edu: {
+        cs:      { title: "Toegepaste Informatica",             subtitle: "Thomas More Hogeschool — België" },
+        arch:    { title: "Architectuur en Stedenbouw",         subtitle: "Cesar Vallejo Universiteit — Peru" },
+        autocad: { title: "AutoCAD Architecture Certificering", subtitle: "Cesar Vallejo Universiteit — Peru" },
+      },
     },
   },
 };

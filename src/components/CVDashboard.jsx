@@ -31,7 +31,6 @@ function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onC
             exit={{ scale: 0.95, opacity: 0, y: 12 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* Close */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 rounded-xl border border-white/10 bg-white/5 p-1.5 text-white/40 hover:text-white hover:bg-white/10 transition"
@@ -65,7 +64,7 @@ function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onC
 // ── Animated language bar ─────────────────────────────────────────────────────
 function LangBar({ name, level, pct, color }) {
   const [go, setGo] = useState(false);
-  useEffect(() => { const t = setTimeout(() => setGo(true), 80); return () => clearTimeout(t); }, []);
+  useEffect(() => { const id = setTimeout(() => setGo(true), 80); return () => clearTimeout(id); }, []);
   return (
     <div>
       <div className="flex justify-between mb-2">
@@ -83,7 +82,7 @@ function LangBar({ name, level, pct, color }) {
 }
 
 // ── Timeline card ─────────────────────────────────────────────────────────────
-function TimelineItem({ item, onOpen, index, isLast }) {
+function TimelineItem({ item, onOpen, index, isLast, detailsBtn }) {
   const c = item.color;
   return (
     <motion.div
@@ -92,7 +91,6 @@ function TimelineItem({ item, onOpen, index, isLast }) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.09, duration: 0.35, ease: "easeOut" }}
     >
-      {/* Dot + line */}
       <div className="flex flex-col items-center shrink-0 w-9">
         <div
           className="relative z-10 w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
@@ -103,7 +101,6 @@ function TimelineItem({ item, onOpen, index, isLast }) {
         {!isLast && <div className="flex-1 w-px mt-2 mb-0" style={{ background: "rgba(255,255,255,0.07)", minHeight: 16 }} />}
       </div>
 
-      {/* Card */}
       <button
         type="button"
         onClick={() => onOpen(item.id)}
@@ -119,7 +116,7 @@ function TimelineItem({ item, onOpen, index, isLast }) {
             className="shrink-0 text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 font-medium whitespace-nowrap"
             style={{ color: c, background: `${c}18` }}
           >
-            details →
+            {detailsBtn}
           </div>
         </div>
       </button>
@@ -158,114 +155,84 @@ function SkillGroup({ label, color, skills, index }) {
 // ── Main component ────────────────────────────────────────────────────────────
 export default function CVDashboard({ t, downloads }) {
   const tabs = useMemo(() => [
-    { id: "overview",     label: t?.cv?.overview     ?? "Overview"     },
-    { id: "experience",   label: t?.cv?.experience   ?? "Experience"   },
-    { id: "skills",       label: t?.cv?.skills       ?? "Skills"       },
-    { id: "volunteering", label: t?.cv?.volunteering ?? "Volunteering" },
-    { id: "education",    label: t?.cv?.education    ?? "Education"    },
+    { id: "overview",     label: t.cv.overview     },
+    { id: "experience",   label: t.cv.experience   },
+    { id: "skills",       label: t.cv.skills       },
+    { id: "volunteering", label: t.cv.volunteering },
+    { id: "education",    label: t.cv.education    },
   ], [t]);
 
   const [activeTab, setActiveTab] = useState("overview");
   const [openItem,  setOpenItem]  = useState(null);
 
+  const langBars = useMemo(() => {
+    const pcts   = [100, 88, 28];
+    const colors = [CORAL, SAGE, SAND];
+    return t.cv.languages.map((l, i) => ({ name: l.name, level: l.level, pct: pcts[i], color: colors[i] }));
+  }, [t]);
+
+  const highlights = useMemo(() => [
+    { val: "3",   lbl: t.cv.statLanguages,  color: CORAL },
+    { val: "10y", lbl: t.cv.statWorkExp,    color: SAGE  },
+    { val: "AEC", lbl: t.cv.statBackground, color: SAND  },
+    { val: "IoT", lbl: t.cv.statFocus,      color: "rgba(255,255,255,0.55)" },
+  ], [t]);
+
   const experience = useMemo(() => [
     {
       id: "student-horeca", color: CORAL,
       year: "2023 – Present",
-      title: "Bartender / Waiter (Student jobs)",
-      subtitle: "Post Restaurant, VOLT, Irish Pub — Belgium",
-      bullets: [
-        "Delivered attentive service in busy, high-end environments; managed bar + table orders.",
-        "Prepared cocktails and beverages to house standards and customer preferences.",
-        "Monitored stock levels and supported hygiene/safety standards.",
-      ],
+      title:    t.cv.exp.horeca.title,
+      subtitle: t.cv.exp.horeca.subtitle,
+      bullets:  t.cv.exp.horeca.bullets,
     },
     {
       id: "ops-warehouse", color: SAGE,
       year: "2022 – 2023",
-      title: "Operations & Warehouse Assistant",
-      subtitle: "Distrilog, Beyers, Greenyard — Belgium",
-      bullets: [
-        "Packed, sorted, and prepared high volumes of products for shipment.",
-        "Operated pallet stacking/wrapping equipment and followed safety procedures.",
-        "Supported logistics workflows by keeping workstations clean and organized.",
-      ],
+      title:    t.cv.exp.warehouse.title,
+      subtitle: t.cv.exp.warehouse.subtitle,
+      bullets:  t.cv.exp.warehouse.bullets,
     },
     {
       id: "customer-sales", color: SAND,
       year: "2013 – 2021",
-      title: "Customer Service & Sales Representative",
-      subtitle: "Teleperformance, Los Portales, Pet Center — Peru & Remote",
-      bullets: [
-        "Resolved customer inquiries and complaints, aiming for high satisfaction.",
-        "Used upselling/cross-selling to increase sales and customer loyalty.",
-        "Handled payments and maintained accurate records in fast-paced environments.",
-      ],
+      title:    t.cv.exp.sales.title,
+      subtitle: t.cv.exp.sales.subtitle,
+      bullets:  t.cv.exp.sales.bullets,
     },
     {
       id: "aec", color: SAND,
       year: "2015 – 2020",
-      title: "Architecture & Urban Planning Assistant",
-      subtitle: "WAO, TEKTUM, IMP, Municipality of Puente Piedra — Peru",
-      bullets: [
-        "Produced architectural + urban-planning drawings in AutoCAD/Revit and BIM workflows.",
-        "Supported research, data analysis, and preparation of presentations.",
-        "Assisted with site inspections, documentation, cost estimates, and coordination.",
-      ],
+      title:    t.cv.exp.aec.title,
+      subtitle: t.cv.exp.aec.subtitle,
+      bullets:  t.cv.exp.aec.bullets,
     },
-  ], []);
+  ], [t]);
 
   const volunteering = useMemo(() => [
     {
       id: "vol-barista", color: SAGE,
       year: "Oct 2022 – Dec 2024",
-      title: "Volunteer Barista",
-      subtitle: "The Big C — Belgium",
-      bullets: [
-        "Prepared and served beverages while supporting a welcoming community space.",
-        "Handled payments and maintained a clean, safe working area.",
-      ],
+      title:    t.cv.vol.barista.title,
+      subtitle: t.cv.vol.barista.subtitle,
+      bullets:  t.cv.vol.barista.bullets,
     },
-  ], []);
+  ], [t]);
 
   const education = useMemo(() => [
-    { title: "Applied Computer Science",        subtitle: "Thomas More University — Belgium", year: "2022 – Present", active: true,  color: CORAL, icon: "🎓" },
-    { title: "Architecture and Urban Planning", subtitle: "Cesar Vallejo University — Peru",  year: "2014 – 2019",   active: false, color: SAND,  icon: "📐" },
-    { title: "AutoCAD Architecture Cert.",      subtitle: "Cesar Vallejo University — Peru",  year: "2016",          active: false, color: SAND,  icon: "📐" },
-  ], []);
+    { title: t.cv.edu.cs.title,      subtitle: t.cv.edu.cs.subtitle,      year: "2022 – Present", active: true,  color: CORAL, icon: "🎓" },
+    { title: t.cv.edu.arch.title,    subtitle: t.cv.edu.arch.subtitle,    year: "2014 – 2019",   active: false, color: SAND,  icon: "📐" },
+    { title: t.cv.edu.autocad.title, subtitle: t.cv.edu.autocad.subtitle, year: "2016",          active: false, color: SAND,  icon: "📐" },
+  ], [t]);
 
   const skillGroups = useMemo(() => [
-    { label: "Web Dev",      color: CORAL, skills: ["Laravel", "Livewire", "Blade", "HTML5 / CSS3", "Tailwind CSS", "JavaScript", "Alpine.js", "PHP", "MySQL", "Eloquent ORM"] },
-    { label: "Data & Tools", color: SAGE,  skills: ["Qlik Sense", "Data modelling", "Excel (intermediate)", "Git / GitHub", "Jira", "VS Code"] },
-    { label: "AEC & Design", color: SAND,  skills: ["AutoCAD", "Revit", "BIM workflows", "Prezi", "Microsoft Office", "Google Workspace"] },
-  ], []);
-
-  const langBars = [
-    { name: "Spanish", level: "Native",          pct: 100, color: CORAL },
-    { name: "English", level: "Fluent",           pct: 88,  color: SAGE  },
-    { name: "Dutch",   level: "Basic (learning)", pct: 28,  color: SAND  },
-  ];
-
-  const highlights = [
-    { val: "3",   lbl: "Languages",  color: CORAL },
-    { val: "10y", lbl: "Work exp.",  color: SAGE  },
-    { val: "AEC", lbl: "Background", color: SAND  },
-    { val: "IoT", lbl: "2025 focus", color: "rgba(255,255,255,0.55)" },
-  ];
-
-  const softSkills = [
-    "Analytical problem-solving & debugging",
-    "Teamwork & collaboration (Agile / Scrum)",
-    "Adaptability & eagerness to learn",
-    "Clear communication — technical & non-technical",
-    "Time management, ownership, reliable on deliverables",
-  ];
+    { label: t.cv.skillWeb,  color: CORAL, skills: ["Laravel", "Livewire", "Blade", "HTML5 / CSS3", "Tailwind CSS", "JavaScript", "Alpine.js", "PHP", "MySQL", "Eloquent ORM"] },
+    { label: t.cv.skillData, color: SAGE,  skills: ["Qlik Sense", "Data modelling", "Excel (intermediate)", "Git / GitHub", "Jira", "VS Code"] },
+    { label: t.cv.skillAec,  color: SAND,  skills: ["AutoCAD", "Revit", "BIM workflows", "Prezi", "Microsoft Office", "Google Workspace"] },
+  ], [t]);
 
   const allItems = [...experience, ...volunteering];
   const openData  = openItem ? allItems.find(x => x.id === openItem) : null;
-
-  const heroSubtitle = t?.cv?.headline ?? "Applied Computer Science student • Architecture background • AEC → Tech";
-  const heroSummary  = t?.cv?.summary  ?? "Multilingual student with strong IT foundations, customer service experience, and a practical builder mindset — web apps, dashboards, and prototypes.";
 
   return (
     <div className="grid gap-5">
@@ -275,21 +242,19 @@ export default function CVDashboard({ t, downloads }) {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex-1 min-w-0">
 
-            {/* Badge */}
             <span
               className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium border mb-4"
               style={{ color: CORAL, borderColor: `${CORAL}35`, background: `${CORAL}12` }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: CORAL }} />
-              {heroSubtitle}
+              {t.cv.headline}
             </span>
 
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-br from-white to-white/55 bg-clip-text text-transparent">
-              {t?.nav?.cv ?? "CV"}
+              {t.nav.cv}
             </h1>
-            <p className="mt-3 text-sm text-white/55 leading-relaxed max-w-xl">{heroSummary}</p>
+            <p className="mt-3 text-sm text-white/55 leading-relaxed max-w-xl">{t.cv.summary}</p>
 
-            {/* Quick stats */}
             <div className="mt-5 flex flex-wrap gap-2">
               {highlights.map(h => (
                 <div
@@ -304,7 +269,6 @@ export default function CVDashboard({ t, downloads }) {
             </div>
           </div>
 
-          {/* Download */}
           <a
             href={downloads?.focused}
             target="_blank"
@@ -317,11 +281,10 @@ export default function CVDashboard({ t, downloads }) {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            Download CV
+            {t.cv.downloadBtn}
           </a>
         </div>
 
-        {/* Tabs */}
         <div className="mt-6 flex flex-wrap gap-2 border-t border-white/8 pt-5">
           {tabs.map(tab => (
             <button
@@ -354,13 +317,13 @@ export default function CVDashboard({ t, downloads }) {
           {activeTab === "overview" && (
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <h2 className="text-base font-bold mb-6">Languages</h2>
+                <h2 className="text-base font-bold mb-6">{t.cv.languagesTitle}</h2>
                 <div className="space-y-5">
                   {langBars.map(l => <LangBar key={l.name} {...l} />)}
                 </div>
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <h2 className="text-base font-bold mb-5">At a glance</h2>
+                <h2 className="text-base font-bold mb-5">{t.cv.atAGlance}</h2>
                 <div className="grid grid-cols-2 gap-3 mb-5">
                   {highlights.map(h => (
                     <div key={h.lbl} className="rounded-2xl border border-white/8 bg-white/5 p-3 text-center">
@@ -370,14 +333,10 @@ export default function CVDashboard({ t, downloads }) {
                   ))}
                 </div>
                 <div className="space-y-2.5">
-                  {[
-                    "Full-stack basics (Laravel + Livewire) + Qlik Sense dashboards",
-                    "Strong communication + customer-facing background",
-                    "AEC mindset: documentation, QA, coordination → tech projects",
-                  ].map((h, i) => (
+                  {t.cv.overviewBullets.map((b, i) => (
                     <div key={i} className="flex gap-2.5 text-sm text-white/60 items-start">
                       <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: CORAL }} />
-                      {h}
+                      {b}
                     </div>
                   ))}
                 </div>
@@ -389,11 +348,11 @@ export default function CVDashboard({ t, downloads }) {
           {activeTab === "experience" && (
             <section className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-bold">Experience</h2>
-                <span className="text-xs text-white/30">Click any card for details</span>
+                <h2 className="text-lg font-bold">{t.cv.experience}</h2>
+                <span className="text-xs text-white/30">{t.cv.clickForDetails}</span>
               </div>
               {experience.map((e, i) => (
-                <TimelineItem key={e.id} item={e} onOpen={setOpenItem} index={i} isLast={i === experience.length - 1} />
+                <TimelineItem key={e.id} item={e} onOpen={setOpenItem} index={i} isLast={i === experience.length - 1} detailsBtn={t.cv.detailsBtn} />
               ))}
             </section>
           )}
@@ -407,10 +366,10 @@ export default function CVDashboard({ t, downloads }) {
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-2 h-2 rounded-full" style={{ background: CORAL }} />
-                  <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: CORAL }}>Soft skills</span>
+                  <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: CORAL }}>{t.cv.softSkillsTitle}</span>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
-                  {softSkills.map((s, i) => (
+                  {t.cv.softSkills.map((s, i) => (
                     <div key={i} className="flex gap-3 text-sm text-white/65 items-start">
                       <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: CORAL }} />
                       {s}
@@ -424,9 +383,9 @@ export default function CVDashboard({ t, downloads }) {
           {/* Volunteering */}
           {activeTab === "volunteering" && (
             <section className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold mb-6">Volunteering</h2>
+              <h2 className="text-lg font-bold mb-6">{t.cv.volunteering}</h2>
               {volunteering.map((v, i) => (
-                <TimelineItem key={v.id} item={v} onOpen={setOpenItem} index={i} isLast />
+                <TimelineItem key={v.id} item={v} onOpen={setOpenItem} index={i} isLast detailsBtn={t.cv.detailsBtn} />
               ))}
             </section>
           )}
@@ -434,7 +393,7 @@ export default function CVDashboard({ t, downloads }) {
           {/* Education */}
           {activeTab === "education" && (
             <section className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold mb-6">Education</h2>
+              <h2 className="text-lg font-bold mb-6">{t.cv.education}</h2>
               <div className="grid gap-4">
                 {education.map((e, i) => (
                   <motion.div
@@ -462,7 +421,7 @@ export default function CVDashboard({ t, downloads }) {
                             className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest"
                             style={{ color: e.color, background: `${e.color}20` }}
                           >
-                            Active
+                            {t.cv.activeLabel}
                           </span>
                         )}
                       </div>
