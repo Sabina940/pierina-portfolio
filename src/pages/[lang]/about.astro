@@ -30,8 +30,8 @@ const chips = [
   { label: "Architecture → CS", color: "#C96B4A" },
   { label: "IoT builder",        color: "#8FAF93" },
   { label: "3 languages",        color: "#C9BF9A" },
-  { label: "Belgium by choice",  color: "rgba(255,255,255,0.45)" },
-  { label: "Thomas More",        color: "rgba(255,255,255,0.45)" },
+  { label: "Belgium by choice",  color: null },
+  { label: "Thomas More",        color: null },
 ];
 
 const timeline = [
@@ -68,8 +68,8 @@ const timeline = [
             <div class="mt-5 flex flex-wrap gap-2">
               {chips.map(c => (
                 <span
-                  class="rounded-full px-3 py-1 text-xs font-medium border"
-                  style={`color: ${c.color}; border-color: ${c.color}33; background-color: ${c.color}14;`}
+                  class:list={["rounded-full px-3 py-1 text-xs font-medium border", !c.color && "chip-muted"]}
+                  style={c.color ? `color: ${c.color}; border-color: ${c.color}33; background-color: ${c.color}14;` : undefined}
                 >
                   {c.label}
                 </span>

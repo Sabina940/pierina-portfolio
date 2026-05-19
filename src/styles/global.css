@@ -9,6 +9,18 @@
   --color-brand-light:   #F5F2EC;
 }
 
+/* ── Muted chip (theme-aware via class, not inline style) ─────────────────── */
+.chip-muted {
+  color: rgba(255,255,255,0.55);
+  border-color: rgba(255,255,255,0.15);
+  background-color: rgba(255,255,255,0.08);
+}
+html:not(.dark) .chip-muted {
+  color: rgba(15,32,24,0.55);
+  border-color: rgba(15,32,24,0.15);
+  background-color: rgba(15,32,24,0.08);
+}
+
 /* ── Light-mode overrides (applied when .dark is absent from <html>) ───────── */
 
 html:not(.dark) body {
