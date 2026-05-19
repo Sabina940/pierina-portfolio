@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
+
+const useLayoutEffectSafe = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export function useTheme() {
-  const [isDark, setIsDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
-  useEffect(() => {
+  const [isDark, setIsDark] = useState(false);
+
+  useLayoutEffectSafe(() => {
     const el = document.documentElement;
     setIsDark(el.classList.contains("dark"));
     const obs = new MutationObserver(() => {
