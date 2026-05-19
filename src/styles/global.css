@@ -6,4 +6,69 @@
   --color-brand-sage:    #8FAF93;
   --color-brand-sand:    #C9BF9A;
   --color-brand-coral:   #C96B4A;
+  --color-brand-light:   #F5F2EC;
+}
+
+/* ── Light-mode overrides (applied when .dark is absent from <html>) ───────── */
+
+html:not(.dark) body {
+  background-color: #F5F2EC;
+  color: #0F2018;
+}
+
+/* Background overrides */
+html:not(.dark) .bg-brand-forest     { background-color: #F5F2EC; }
+html:not(.dark) .bg-brand-forest\/90 { background-color: rgba(245,242,236,0.92); }
+html:not(.dark) .bg-brand-forest\/10 { background-color: rgba(245,242,236,0.10); }
+html:not(.dark) .bg-white\/5         { background-color: rgba(15,32,24,0.04); }
+html:not(.dark) .bg-white\/8         { background-color: rgba(15,32,24,0.07); }
+html:not(.dark) .bg-white\/10        { background-color: rgba(15,32,24,0.10); }
+html:not(.dark) .bg-white\/20        { background-color: rgba(15,32,24,0.15); }
+
+/* Text overrides */
+html:not(.dark) .text-neutral-50  { color: #0F2018; }
+html:not(.dark) .text-white       { color: #0F2018; }
+html:not(.dark) .text-white\/25   { color: rgba(15,32,24,0.25); }
+html:not(.dark) .text-white\/30   { color: rgba(15,32,24,0.30); }
+html:not(.dark) .text-white\/35   { color: rgba(15,32,24,0.35); }
+html:not(.dark) .text-white\/40   { color: rgba(15,32,24,0.40); }
+html:not(.dark) .text-white\/45   { color: rgba(15,32,24,0.45); }
+html:not(.dark) .text-white\/50   { color: rgba(15,32,24,0.50); }
+html:not(.dark) .text-white\/55   { color: rgba(15,32,24,0.55); }
+html:not(.dark) .text-white\/60   { color: rgba(15,32,24,0.60); }
+html:not(.dark) .text-white\/65   { color: rgba(15,32,24,0.65); }
+html:not(.dark) .text-white\/70   { color: rgba(15,32,24,0.70); }
+html:not(.dark) .text-white\/75   { color: rgba(15,32,24,0.75); }
+html:not(.dark) .text-white\/80   { color: rgba(15,32,24,0.80); }
+html:not(.dark) .text-white\/90   { color: rgba(15,32,24,0.90); }
+
+/* Border overrides */
+html:not(.dark) .border-white\/8  { border-color: rgba(15,32,24,0.08); }
+html:not(.dark) .border-white\/10 { border-color: rgba(15,32,24,0.10); }
+html:not(.dark) .border-white\/15 { border-color: rgba(15,32,24,0.15); }
+html:not(.dark) .border-white\/20 { border-color: rgba(15,32,24,0.20); }
+
+/* Gradient stops */
+html:not(.dark) .from-white { --tw-gradient-from: #0F2018; }
+html:not(.dark) .via-white  { --tw-gradient-via:  #2D5045; }
+html:not(.dark) .to-white\/50 { --tw-gradient-to: rgba(15,32,24,0.5); }
+html:not(.dark) .to-white\/55 { --tw-gradient-to: rgba(15,32,24,0.55); }
+html:not(.dark) .to-brand-forest  { --tw-gradient-to: #F5F2EC; }
+html:not(.dark) .via-brand-forest\/10 { --tw-gradient-via: rgba(245,242,236,0.10); }
+
+/* Hover state overrides */
+html:not(.dark) .hover\:bg-white\/5:hover  { background-color: rgba(15,32,24,0.04); }
+html:not(.dark) .hover\:bg-white\/8:hover  { background-color: rgba(15,32,24,0.07); }
+html:not(.dark) .hover\:bg-white\/10:hover { background-color: rgba(15,32,24,0.10); }
+html:not(.dark) .hover\:text-white:hover   { color: #0F2018; }
+html:not(.dark) .hover\:border-white\/20:hover { border-color: rgba(15,32,24,0.20); }
+
+/* Group-hover overrides */
+html:not(.dark) .group:hover .group-hover\:bg-white\/20 {
+  background-color: rgba(15,32,24,0.12);
+}
+
+/* Focus ring override */
+html:not(.dark) .focus\:ring-white\/15:focus {
+  --tw-ring-color: rgba(15,32,24,0.15);
 }

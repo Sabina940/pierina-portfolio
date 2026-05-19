@@ -1,5 +1,18 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+function useTheme() {
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
+  useEffect(() => {
+    const el = document.documentElement;
+    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
+    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, []);
+  return isDark;
+}
 
 const CORAL = "#C96B4A";
 const SAGE  = "#8FAF93";
@@ -23,9 +36,13 @@ function tagColor(tag) {
 }
 
 function FilterPill({ label, active, onClick, count, isAll }) {
-  const c = active
-    ? (isAll ? CORAL : tagColor(label))
-    : "rgba(255,255,255,0.45)";
+  const isDark = useTheme();
+  const c = active ? (isAll ? CORAL : tagColor(label)) : "rgba(255,255,255,0.45)";
+  const mutedText  = isDark ? "rgba(255,255,255,0.45)" : "rgba(15,32,24,0.45)";
+  const mutedBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.10)";
+  const mutedBadgeBg = isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.08)";
+  const mutedBadgeText = isDark ? "rgba(255,255,255,0.35)" : "rgba(15,32,24,0.35)";
+  const activeText = isDark ? "#fff" : "#0F2018";
 
   return (
     <button
@@ -34,15 +51,15 @@ function FilterPill({ label, active, onClick, count, isAll }) {
       className="rounded-full border px-3 py-1 text-xs font-medium transition-all duration-200 flex items-center gap-1.5"
       style={
         active
-          ? { color: "#fff", borderColor: `${c}55`, background: `${c}22` }
-          : { color: "rgba(255,255,255,0.45)", borderColor: "rgba(255,255,255,0.08)", background: "transparent" }
+          ? { color: activeText, borderColor: `${c}55`, background: `${c}22` }
+          : { color: mutedText, borderColor: mutedBorder, background: "transparent" }
       }
     >
       {label}
       {count !== undefined && (
         <span
           className="rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none"
-          style={{ background: active ? `${c}35` : "rgba(255,255,255,0.08)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}
+          style={{ background: active ? `${c}35` : mutedBadgeBg, color: active ? activeText : mutedBadgeText }}
         >
           {count}
         </span>

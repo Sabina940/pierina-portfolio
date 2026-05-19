@@ -15,9 +15,23 @@ import {
   Languages,
 } from "lucide-react";
 
+function useTheme() {
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
+  useEffect(() => {
+    const el = document.documentElement;
+    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
+    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, []);
+  return isDark;
+}
+
 export default function MobileMenu({ active = "home", lang = "en", labels }) {
   const [open, setOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(lang);
+  const isDark = useTheme();
 
   useEffect(() => {
     const saved = localStorage.getItem("lang");
@@ -98,8 +112,8 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                   width: "86%",
                   maxWidth: "24rem",
                   zIndex: 9999,
-                  backgroundColor: "#0F2018",
-                  borderRight: "1px solid rgba(255,255,255,0.10)",
+                  backgroundColor: isDark ? "#0F2018" : "#F5F2EC",
+                  borderRight: isDark ? "1px solid rgba(255,255,255,0.10)" : "1px solid rgba(15,32,24,0.10)",
                   overflowY: "auto",
                   padding: "20px",
                 }}
@@ -133,7 +147,7 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                 </button>
               </div>
 
-              <nav className="mt-6 rounded-2xl border space-y-1" style={{ background: "rgba(45,80,69,0.2)" }}>
+              <nav className="mt-6 rounded-2xl border space-y-1" style={{ background: isDark ? "rgba(45,80,69,0.2)" : "rgba(15,32,24,0.05)" }}>
                 {nav.map((item) => {
                   const Icon = item.icon;
                   const isActive = item.id === active;

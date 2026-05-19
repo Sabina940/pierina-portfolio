@@ -1,12 +1,26 @@
 import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+function useTheme() {
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
+  useEffect(() => {
+    const el = document.documentElement;
+    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
+    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, []);
+  return isDark;
+}
+
 const CORAL = "#C96B4A";
 const SAGE  = "#8FAF93";
 const SAND  = "#C9BF9A";
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onClose }) {
+  const isDark = useTheme();
   useEffect(() => {
     if (!open) return;
     const onEsc = (e) => e.key === "Escape" && onClose();
@@ -25,7 +39,7 @@ function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onC
           <div className="absolute inset-0 bg-black/75" onClick={onClose} />
           <motion.div
             className="relative w-full max-w-xl rounded-3xl border border-white/10 p-6 shadow-2xl"
-            style={{ backgroundColor: "#0F2018" }}
+            style={{ backgroundColor: isDark ? "#0F2018" : "#F5F2EC" }}
             initial={{ scale: 0.95, opacity: 0, y: 12 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 12 }}
@@ -63,6 +77,7 @@ function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onC
 
 // ── Animated language bar ─────────────────────────────────────────────────────
 function LangBar({ name, level, pct, color }) {
+  const isDark = useTheme();
   const [go, setGo] = useState(false);
   useEffect(() => { const id = setTimeout(() => setGo(true), 80); return () => clearTimeout(id); }, []);
   return (
@@ -71,7 +86,7 @@ function LangBar({ name, level, pct, color }) {
         <span className="text-sm font-medium text-white/80">{name}</span>
         <span className="text-xs text-white/40">{level}</span>
       </div>
-      <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.07)" }}>
+      <div className="h-1.5 rounded-full overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.07)" : "rgba(15,32,24,0.10)" }}>
         <div
           className="h-full rounded-full"
           style={{ width: go ? `${pct}%` : "0%", background: color, transition: "width 900ms cubic-bezier(0.4,0,0.2,1)" }}
@@ -83,6 +98,7 @@ function LangBar({ name, level, pct, color }) {
 
 // ── Timeline card ─────────────────────────────────────────────────────────────
 function TimelineItem({ item, onOpen, index, isLast, detailsBtn }) {
+  const isDark = useTheme();
   const c = item.color;
   return (
     <motion.div
@@ -98,7 +114,7 @@ function TimelineItem({ item, onOpen, index, isLast, detailsBtn }) {
         >
           <div className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
         </div>
-        {!isLast && <div className="flex-1 w-px mt-2 mb-0" style={{ background: "rgba(255,255,255,0.07)", minHeight: 16 }} />}
+        {!isLast && <div className="flex-1 w-px mt-2 mb-0" style={{ background: isDark ? "rgba(255,255,255,0.07)" : "rgba(15,32,24,0.12)", minHeight: 16 }} />}
       </div>
 
       <button
@@ -154,6 +170,7 @@ function SkillGroup({ label, color, skills, index }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function CVDashboard({ t, downloads }) {
+  const isDark = useTheme();
   const tabs = useMemo(() => [
     { id: "overview",     label: t.cv.overview     },
     { id: "experience",   label: t.cv.experience   },
@@ -175,8 +192,8 @@ export default function CVDashboard({ t, downloads }) {
     { val: "3",   lbl: t.cv.statLanguages,  color: CORAL },
     { val: "10y", lbl: t.cv.statWorkExp,    color: SAGE  },
     { val: "AEC", lbl: t.cv.statBackground, color: SAND  },
-    { val: "IoT", lbl: t.cv.statFocus,      color: "rgba(255,255,255,0.55)" },
-  ], [t]);
+    { val: "IoT", lbl: t.cv.statFocus,      color: isDark ? "rgba(255,255,255,0.55)" : "rgba(15,32,24,0.55)" },
+  ], [t, isDark]);
 
   const experience = useMemo(() => [
     {
@@ -293,8 +310,8 @@ export default function CVDashboard({ t, downloads }) {
               onClick={() => setActiveTab(tab.id)}
               className="rounded-full border px-4 py-1.5 text-xs font-medium transition-all duration-200"
               style={activeTab === tab.id
-                ? { color: "#fff", borderColor: `${CORAL}50`, background: `${CORAL}22` }
-                : { color: "rgba(255,255,255,0.45)", borderColor: "rgba(255,255,255,0.08)", background: "transparent" }
+                ? { color: isDark ? "#fff" : "#0F2018", borderColor: `${CORAL}50`, background: `${CORAL}22` }
+                : { color: isDark ? "rgba(255,255,255,0.45)" : "rgba(15,32,24,0.45)", borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.10)", background: "transparent" }
               }
             >
               {tab.label}
@@ -400,8 +417,8 @@ export default function CVDashboard({ t, downloads }) {
                     key={e.title}
                     className="rounded-2xl border p-5 flex gap-4 items-start"
                     style={{
-                      borderColor: e.active ? `${e.color}35` : "rgba(255,255,255,0.08)",
-                      background:  e.active ? `${e.color}08`  : "rgba(255,255,255,0.03)",
+                      borderColor: e.active ? `${e.color}35` : isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.08)",
+                      background:  e.active ? `${e.color}08`  : isDark ? "rgba(255,255,255,0.03)" : "rgba(15,32,24,0.03)",
                     }}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
