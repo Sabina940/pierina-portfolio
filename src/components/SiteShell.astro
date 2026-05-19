@@ -2,6 +2,7 @@
 import MobileMenu from "./MobileMenu.jsx";
 import LanguageSwitch from "./LanguageSwitch.astro";
 import ThemeToggle from "./ThemeToggle.jsx";
+import SearchBar from "./SearchBar.jsx";
 import { ui } from "../i18n/ui";
 import { isLang } from "../i18n/utils";
 
@@ -102,6 +103,9 @@ const nav = [
           ))}
           
         </nav>
+        <div class="mt-6">
+          <SearchBar client:load lang={lang} />
+        </div>
         <LanguageSwitch lang={lang} />
         <div class="mt-3 flex justify-end">
           <ThemeToggle client:load />
