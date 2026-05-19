@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteShell from "../../../components/SiteShell.astro";
-import { projects } from "../../../content/projects";
+import { projectSlugs, getProjects } from "../../../content/projects";
 import { ui } from "../../../i18n/ui";
 import { isLang } from "../../../i18n/utils";
 
 export async function getStaticPaths() {
   const langs = ["en", "es", "nl"] as const;
   return langs.flatMap((lang) =>
-    projects.map((p) => ({ params: { lang, slug: p.slug } }))
+    projectSlugs.map((slug) => ({ params: { lang, slug } }))
   );
 }
 
@@ -16,9 +16,9 @@ const { lang, slug } = Astro.params;
 if (!lang || !isLang(lang)) throw new Error("Invalid lang");
 const t = ui[lang];
 
+const projects = getProjects(lang);
 const project = projects.find((p) => p.slug === slug);
 if (!project) throw new Error("Project not found");
-
 
 const index = projects.findIndex((p) => p.slug === slug);
 const prev = index > 0 ? projects[index - 1] : null;
