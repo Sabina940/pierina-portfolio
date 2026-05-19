@@ -81,6 +81,28 @@ export type UI = {
       autocad: { title: string; subtitle: string };
     };
   };
+  projects: {
+    pill: string;
+    subtitle: string;
+    statProjects: string;
+    statTech: string;
+    statLatest: string;
+    filterAll: string;
+    emptyState: string;
+    viewBtn: string;
+    backBtn: string;
+    artifacts: string;
+    demoVideo: string;
+    openFullscreen: string;
+    context: string;
+    myRole: string;
+    stack: string;
+    whatBuilt: string;
+    whatLearned: string;
+    gallery: string;
+    previous: string;
+    next: string;
+  };
   internship: {
     title: string;
     subtitle: string;
@@ -197,6 +219,15 @@ export const ui: Record<Lang, UI> = {
         arch:    { title: "Architecture and Urban Planning", subtitle: "Cesar Vallejo University — Peru" },
         autocad: { title: "AutoCAD Architecture Cert.",      subtitle: "Cesar Vallejo University — Peru" },
       },
+    },
+    projects: {
+      pill: "Case studies", subtitle: "Context, what I built, and what I learned — written for IT professionals.",
+      statProjects: "Projects", statTech: "Technologies", statLatest: "Latest",
+      filterAll: "All", emptyState: "No projects match this filter.", viewBtn: "View →",
+      backBtn: "Back to projects", artifacts: "Artifacts", demoVideo: "Demo video",
+      openFullscreen: "Open fullscreen →", context: "Context", myRole: "My role", stack: "Stack",
+      whatBuilt: "What I built", whatLearned: "What I learned", gallery: "Gallery",
+      previous: "Previous", next: "Next",
     },
     internship: {
       title: "Smart Home Integration",
@@ -347,6 +378,15 @@ export const ui: Record<Lang, UI> = {
         autocad: { title: "Certificación AutoCAD Architecture", subtitle: "Universidad Cesar Vallejo — Perú" },
       },
     },
+    projects: {
+      pill: "Casos de estudio", subtitle: "Contexto, qué construí y qué aprendí — escrito para profesionales de IT.",
+      statProjects: "Proyectos", statTech: "Tecnologías", statLatest: "Último",
+      filterAll: "Todos", emptyState: "Ningún proyecto coincide con este filtro.", viewBtn: "Ver →",
+      backBtn: "Volver a proyectos", artifacts: "Recursos", demoVideo: "Video demo",
+      openFullscreen: "Pantalla completa →", context: "Contexto", myRole: "Mi rol", stack: "Tecnologías",
+      whatBuilt: "Qué construí", whatLearned: "Qué aprendí", gallery: "Galería",
+      previous: "Anterior", next: "Siguiente",
+    },
     internship: {
       title: "Integración de Hogar Inteligente",
       subtitle: "Prototipo IoT para rutinas nocturnas más seguras para adultos mayores · Mobilab & Care",
@@ -495,6 +535,15 @@ export const ui: Record<Lang, UI> = {
         arch:    { title: "Architectuur en Stedenbouw",         subtitle: "Cesar Vallejo Universiteit — Peru" },
         autocad: { title: "AutoCAD Architecture Certificering", subtitle: "Cesar Vallejo Universiteit — Peru" },
       },
+    },
+    projects: {
+      pill: "Casestudy's", subtitle: "Context, wat ik bouwde en wat ik leerde — geschreven voor IT-professionals.",
+      statProjects: "Projecten", statTech: "Technologieën", statLatest: "Laatste",
+      filterAll: "Alle", emptyState: "Geen projecten gevonden voor dit filter.", viewBtn: "Bekijk →",
+      backBtn: "Terug naar projecten", artifacts: "Artefacten", demoVideo: "Demovideo",
+      openFullscreen: "Volledig scherm →", context: "Context", myRole: "Mijn rol", stack: "Technologieën",
+      whatBuilt: "Wat ik bouwde", whatLearned: "Wat ik leerde", gallery: "Galerij",
+      previous: "Vorige", next: "Volgende",
     },
     internship: {
       title: "Smart Home Integratie",

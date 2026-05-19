@@ -22,9 +22,9 @@ function tagColor(tag) {
   return TAG_COLOR[tag] ?? "rgba(255,255,255,0.55)";
 }
 
-function FilterPill({ label, active, onClick, count }) {
+function FilterPill({ label, active, onClick, count, isAll }) {
   const c = active
-    ? (label === "All" ? CORAL : tagColor(label))
+    ? (isAll ? CORAL : tagColor(label))
     : "rgba(255,255,255,0.45)";
 
   return (
@@ -51,7 +51,7 @@ function FilterPill({ label, active, onClick, count }) {
   );
 }
 
-function ProjectCard({ p, lang, index, featured }) {
+function ProjectCard({ p, lang, index, featured, viewBtn }) {
   const accentColor = tagColor(p.tags?.[0]);
 
   return (
@@ -123,7 +123,7 @@ function ProjectCard({ p, lang, index, featured }) {
               className="shrink-0 rounded-xl border px-2.5 py-1.5 text-xs font-semibold opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
               style={{ color: accentColor, borderColor: `${accentColor}40`, background: `${accentColor}18` }}
             >
-              View →
+              {viewBtn}
             </span>
           </div>
         </div>
@@ -132,7 +132,11 @@ function ProjectCard({ p, lang, index, featured }) {
   );
 }
 
-export default function ProjectsGrid({ lang = "en", projects = [] }) {
+export default function ProjectsGrid({ lang = "en", projects = /** @type {any[]} */ ([]), labels = {} }) {
+  const filterAll   = labels?.filterAll   ?? "All";
+  const emptyState  = labels?.emptyState  ?? "No projects match this filter.";
+  const viewBtn     = labels?.viewBtn     ?? "View →";
+
   const filters = useMemo(() => {
     const allTags = new Set();
     projects.forEach((p) => (p.tags || []).forEach((t) => allTags.add(t)));
@@ -161,10 +165,11 @@ export default function ProjectsGrid({ lang = "en", projects = [] }) {
         {filters.map((f) => (
           <FilterPill
             key={f}
-            label={f}
+            label={f === "All" ? filterAll : f}
             active={active === f}
             onClick={() => setActive(f)}
             count={tagCounts[f]}
+            isAll={f === "All"}
           />
         ))}
       </div>
@@ -179,6 +184,7 @@ export default function ProjectsGrid({ lang = "en", projects = [] }) {
               lang={lang}
               index={i}
               featured={i === 0 && active === "All"}
+              viewBtn={viewBtn}
             />
           ))}
         </AnimatePresence>
@@ -191,7 +197,7 @@ export default function ProjectsGrid({ lang = "en", projects = [] }) {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         >
           <div className="text-2xl mb-2">🔍</div>
-          <div className="text-white/60 text-sm">No projects match this filter.</div>
+          <div className="text-white/60 text-sm">{emptyState}</div>
         </motion.div>
       )}
     </div>

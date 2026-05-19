@@ -41,7 +41,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
       <a href={`/${lang}/projects`}
          class="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition mb-5">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-        Back to projects
+        {t.projects.backBtn}
       </a>
 
       <!-- Cover hero -->
@@ -83,7 +83,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
           <div class="flex items-center justify-between gap-4 flex-wrap">
             <div class="flex items-center gap-2">
               <div class="w-1.5 h-1.5 rounded-full" style={`background:${accent};`}></div>
-              <h2 class="text-sm font-semibold">Artifacts</h2>
+              <h2 class="text-sm font-semibold">{t.projects.artifacts}</h2>
             </div>
             <div class="flex flex-wrap gap-2">
               {project.links.map((l) => (
@@ -104,11 +104,11 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
           <div class="p-5 sm:p-6 flex items-center justify-between">
             <div class="flex items-center gap-2">
               <div class="w-1.5 h-1.5 rounded-full" style={`background:${accent};`}></div>
-              <h2 class="text-sm font-semibold">Demo video</h2>
+              <h2 class="text-sm font-semibold">{t.projects.demoVideo}</h2>
             </div>
             <a href={project.videoSrc} target="_blank" rel="noopener noreferrer"
                class="text-xs text-white/50 hover:text-white transition">
-              Open fullscreen →
+              {t.projects.openFullscreen}
             </a>
           </div>
           <video class="w-full bg-black" controls playsinline preload="metadata">
@@ -123,14 +123,14 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
         <!-- Context -->
         <div class="rounded-3xl border border-white/10 bg-white/5 p-6"
              style={`border-left: 3px solid ${accent}60;`}>
-          <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>Context</h2>
+          <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>{t.projects.context}</h2>
           <p class="text-white/70 leading-relaxed text-sm">{project.sections.context}</p>
         </div>
 
         <!-- Role + Stack -->
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>My role</h2>
+            <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>{t.projects.myRole}</h2>
             <ul class="space-y-2.5">
               {project.sections.role.map((x) => (
                 <li class="flex gap-3 text-sm text-white/70 leading-relaxed">
@@ -142,7 +142,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>Stack</h2>
+            <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>{t.projects.stack}</h2>
             <div class="flex flex-wrap gap-1.5">
               {project.sections.stack.map((x) => {
                 const c = TAG_COLOR[x] ?? accent;
@@ -160,7 +160,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
         <!-- What I built -->
         <div class="rounded-3xl border border-white/10 bg-white/5 p-6"
              style={`border-left: 3px solid ${accent}60;`}>
-          <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>What I built</h2>
+          <h2 class="text-base font-bold mb-3" style={`color:${accent};`}>{t.projects.whatBuilt}</h2>
           <ul class="space-y-2.5">
             {project.sections.built.map((x) => (
               <li class="flex gap-3 text-sm text-white/70 leading-relaxed">
@@ -174,7 +174,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
         <!-- What I learned -->
         <div class="rounded-3xl border border-white/10 bg-white/5 p-6"
              style={`border-left: 3px solid rgba(143,175,147,0.60);`}>
-          <h2 class="text-base font-bold mb-3" style="color:#8FAF93;">What I learned</h2>
+          <h2 class="text-base font-bold mb-3" style="color:#8FAF93;">{t.projects.whatLearned}</h2>
           <ul class="space-y-2.5">
             {project.sections.learned.map((x) => (
               <li class="flex gap-3 text-sm text-white/70 leading-relaxed">
@@ -188,7 +188,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
         <!-- Gallery -->
         {project.gallery.length > 0 && (
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h2 class="text-base font-bold mb-4" style={`color:${accent};`}>Gallery</h2>
+            <h2 class="text-base font-bold mb-4" style={`color:${accent};`}>{t.projects.gallery}</h2>
             <div class="grid gap-3 sm:grid-cols-2">
               {project.gallery.map((img, idx) => (
                 <button type="button"
@@ -251,7 +251,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
              class="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition group flex items-center gap-3">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="shrink-0 text-white/40 group-hover:text-white transition"><polyline points="15 18 9 12 15 6"/></svg>
             <div class="min-w-0">
-              <div class="text-[10px] text-white/35 uppercase tracking-widest">Previous</div>
+              <div class="text-[10px] text-white/35 uppercase tracking-widest">{t.projects.previous}</div>
               <div class="text-sm font-medium text-white/75 group-hover:text-white transition truncate">{prev.title}</div>
             </div>
           </a>
@@ -260,7 +260,7 @@ const accent = TAG_COLOR[accentTag] ?? "#C96B4A";
           <a href={`/${lang}/projects/${next.slug}`}
              class="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition group flex items-center justify-end gap-3 text-right">
             <div class="min-w-0">
-              <div class="text-[10px] text-white/35 uppercase tracking-widest">Next</div>
+              <div class="text-[10px] text-white/35 uppercase tracking-widest">{t.projects.next}</div>
               <div class="text-sm font-medium text-white/75 group-hover:text-white transition truncate">{next.title}</div>
             </div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="shrink-0 text-white/40 group-hover:text-white transition"><polyline points="9 18 15 12 9 6"/></svg>
