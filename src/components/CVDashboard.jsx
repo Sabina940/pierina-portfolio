@@ -1,18 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-function useTheme() {
-  const [isDark, setIsDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
-  useEffect(() => {
-    const el = document.documentElement;
-    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
-    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
-    return () => obs.disconnect();
-  }, []);
-  return isDark;
-}
+import { useTheme } from "../hooks/useTheme";
 
 const CORAL = "#C96B4A";
 const SAGE  = "#8FAF93";
@@ -182,6 +170,12 @@ export default function CVDashboard({ t, downloads }) {
   const [activeTab, setActiveTab] = useState("overview");
   const [openItem,  setOpenItem]  = useState(null);
 
+  const muted     = isDark ? "rgba(255,255,255,0.45)" : "rgba(15,32,24,0.45)";
+  const mutedBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.10)";
+  const inactiveEducBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.08)";
+  const inactiveEducBg     = isDark ? "rgba(255,255,255,0.03)" : "rgba(15,32,24,0.03)";
+  const activeTabColor     = isDark ? "#fff" : "#0F2018";
+
   const langBars = useMemo(() => {
     const pcts   = [100, 88, 28];
     const colors = [CORAL, SAGE, SAND];
@@ -310,8 +304,8 @@ export default function CVDashboard({ t, downloads }) {
               onClick={() => setActiveTab(tab.id)}
               className="rounded-full border px-4 py-1.5 text-xs font-medium transition-all duration-200"
               style={activeTab === tab.id
-                ? { color: isDark ? "#fff" : "#0F2018", borderColor: `${CORAL}50`, background: `${CORAL}22` }
-                : { color: isDark ? "rgba(255,255,255,0.45)" : "rgba(15,32,24,0.45)", borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.10)", background: "transparent" }
+                ? { color: activeTabColor, borderColor: `${CORAL}50`, background: `${CORAL}22` }
+                : { color: muted, borderColor: mutedBorder, background: "transparent" }
               }
             >
               {tab.label}
@@ -417,8 +411,8 @@ export default function CVDashboard({ t, downloads }) {
                     key={e.title}
                     className="rounded-2xl border p-5 flex gap-4 items-start"
                     style={{
-                      borderColor: e.active ? `${e.color}35` : isDark ? "rgba(255,255,255,0.08)" : "rgba(15,32,24,0.08)",
-                      background:  e.active ? `${e.color}08`  : isDark ? "rgba(255,255,255,0.03)" : "rgba(15,32,24,0.03)",
+                      borderColor: e.active ? `${e.color}35` : inactiveEducBorder,
+                      background:  e.active ? `${e.color}08`  : inactiveEducBg,
                     }}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}

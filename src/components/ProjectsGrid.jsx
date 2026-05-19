@@ -1,18 +1,6 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-function useTheme() {
-  const [isDark, setIsDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
-  useEffect(() => {
-    const el = document.documentElement;
-    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
-    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
-    return () => obs.disconnect();
-  }, []);
-  return isDark;
-}
+import { useTheme } from "../hooks/useTheme";
 
 const CORAL = "#C96B4A";
 const SAGE  = "#8FAF93";
@@ -115,8 +103,8 @@ function ProjectCard({ p, lang, index, featured, viewBtn }) {
 
         {/* Bottom content */}
         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h2 className="text-lg font-bold leading-tight">{p.title}</h2>
-          <p className="mt-1 text-sm text-white/70 leading-snug">{p.subtitle}</p>
+          <h2 className="text-lg font-bold leading-tight" style={{ color: "white" }}>{p.title}</h2>
+          <p className="mt-1 text-sm leading-snug" style={{ color: "rgba(255,255,255,0.70)" }}>{p.subtitle}</p>
 
           <div className="mt-3 flex items-end justify-between gap-3">
             <div className="flex flex-wrap gap-1.5">

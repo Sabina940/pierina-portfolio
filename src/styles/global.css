@@ -72,3 +72,23 @@ html:not(.dark) .group:hover .group-hover\:bg-white\/20 {
 html:not(.dark) .focus\:ring-white\/15:focus {
   --tw-ring-color: rgba(15,32,24,0.15);
 }
+
+/* ── Always-dark overlay exceptions ──────────────────────────────────────── */
+/* These elements use a dark backdrop regardless of theme, so white text must be preserved */
+
+/* WorldTile back-panel (rgba(15,32,24,0.90) frosted overlay) */
+html:not(.dark) .back-panel { color: white; }
+html:not(.dark) .back-panel .text-white\/80 { color: rgba(255,255,255,0.80); }
+html:not(.dark) .back-panel .text-white\/35 { color: rgba(255,255,255,0.35); }
+
+/* WorldTile front-caption (sits on a from-black/75 gradient overlay) */
+html:not(.dark) .front-caption .text-white { color: white; }
+html:not(.dark) .front-caption .text-white\/55 { color: rgba(255,255,255,0.55); }
+
+/* InternshipDashboard lightbox (bg-black/92 full-screen overlay) */
+html:not(.dark) .bg-black\/92 { color: white; }
+html:not(.dark) .bg-black\/92 .text-white\/45 { color: rgba(255,255,255,0.45); }
+html:not(.dark) .bg-black\/92 .text-white\/60 { color: rgba(255,255,255,0.60); }
+html:not(.dark) .bg-black\/92 .text-white\/70 { color: rgba(255,255,255,0.70); }
+html:not(.dark) .bg-black\/92 .bg-white\/10   { background-color: rgba(255,255,255,0.10); }
+html:not(.dark) .bg-black\/92 .hover\:text-white:hover { color: white; }

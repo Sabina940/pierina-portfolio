@@ -14,19 +14,7 @@ import {
   Globe,
   Languages,
 } from "lucide-react";
-
-function useTheme() {
-  const [isDark, setIsDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
-  useEffect(() => {
-    const el = document.documentElement;
-    const obs = new MutationObserver(() => setIsDark(el.classList.contains("dark")));
-    obs.observe(el, { attributes: true, attributeFilter: ["class"] });
-    return () => obs.disconnect();
-  }, []);
-  return isDark;
-}
+import { useTheme } from "../hooks/useTheme";
 
 export default function MobileMenu({ active = "home", lang = "en", labels }) {
   const [open, setOpen] = useState(false);
