@@ -15,6 +15,7 @@ import {
   Languages,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
+import SearchBar from "./SearchBar";
 
 export default function MobileMenu({ active = "home", lang = "en", labels }) {
   const [open, setOpen] = useState(false);
@@ -159,7 +160,11 @@ export default function MobileMenu({ active = "home", lang = "en", labels }) {
                 })}
               </nav>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-[#2D5045]/20 p-4">
+              <div className="mt-4">
+                <SearchBar lang={currentLang} />
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-white/10 bg-[#2D5045]/20 p-4">
                 <div className="flex items-center gap-2 text-sm font-semibold">
                   <Languages size={16} />
                   Language
