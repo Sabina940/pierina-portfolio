@@ -127,7 +127,7 @@ export const ui: Record<Lang, UI> = {
     nav: { home: "Home", about: "About", internship: "Internship", projects: "Projects", cv: "CV" },
     hero: {
       pill: "AEC → Applied Computer Science • Belgium",
-      title: "Architect turned developer — building AI, vision & IoT tools.",
+      title: "Architect turned developer, building AI, vision & IoT tools.",
       body:
         "I’m an architect transitioning into Applied Computer Science in Belgium. I bridge BIM/Revit, construction documentation, QA/QC, and site coordination with practical digital tools in AI/ML, computer vision, automation, and data visualization ,  so information becomes clearer, faster, and easier to act on.",
       cta1: "View Internship",
@@ -285,7 +285,7 @@ export const ui: Record<Lang, UI> = {
     nav: { home: "Inicio", about: "Sobre mí", internship: "Prácticas", projects: "Proyectos", cv: "CV" },
     hero: {
       pill: "AEC → Ciencias de la Computación Aplicadas • Bélgica",
-      title: "Arquitecta reconvertida en desarrolladora — IA, visión e IoT.",
+      title: "Arquitecta reconvertida en desarrolladora, IA, visión e IoT.",
       body:
         "Soy arquitecta en transición a Ciencias de la Computación Aplicadas en Bélgica. Conecto BIM/Revit, documentación de obra, QA/QC y coordinación en sitio con herramientas digitales prácticas en IA/ML, visión por computador, automatización y visualización de datos ,  para que la información sea más clara, rápida y accionable.",
       cta1: "Ver Prácticas",
@@ -443,7 +443,7 @@ export const ui: Record<Lang, UI> = {
     nav: { home: "Home", about: "Over mij", internship: "Stage", projects: "Projecten", cv: "CV" },
     hero: {
       pill: "AEC → Toegepaste Informatica • België",
-      title: "Van architect naar ontwikkelaar — AI, vision & IoT-tools bouwen.",
+      title: "Van architect naar ontwikkelaar, AI, vision & IoT-tools bouwen.",
       body:
         "Ik ben architect en stap over naar Toegepaste Informatica in België. Ik verbind BIM/Revit, werfdocumentatie, QA/QC en sitecoördinatie met praktische digitale tools in AI/ML, computer vision, automatisering en datavisualisatie ,  zodat informatie duidelijker, sneller en beter bruikbaar wordt.",
       cta1: "Bekijk Stage",
