@@ -7,28 +7,37 @@ const SAGE  = "#8FAF93";
 const SAND  = "#C9BF9A";
 const AEC   = "#A8B5C2";
 
+// Individual entry metadata (period per position, used inside the modal)
 const EXP_META = [
-  { id: "post-restaurant", period: "Feb 2025 – Present",  color: CORAL },
-  { id: "volt",            period: "Apr 2024 – Sep 2024", color: CORAL },
-  { id: "irish-pub",       period: "Apr 2023 – Mar 2024", color: CORAL },
-  { id: "distrilog",       period: "Mar 2023 – Apr 2023", color: SAGE  },
-  { id: "beyers",          period: "Dec 2022 – Apr 2023", color: SAGE  },
-  { id: "bistro31",        period: "Jul 2022 – Sep 2022", color: SAGE  },
-  { id: "greenyard",       period: "Apr 2022 – Jul 2022", color: SAGE  },
-  { id: "teleperformance", period: "May 2020 – Aug 2021", color: SAND  },
-  { id: "wao",             period: "Jun 2019 – Mar 2020", color: AEC   },
-  { id: "tektum",          period: "Mar 2018 – May 2019", color: AEC   },
-  { id: "los-portales",    period: "Oct 2017 – Mar 2018", color: SAND  },
-  { id: "imp-sanborja",    period: "Jun 2017 – Mar 2018", color: AEC   },
-  { id: "imp-lima",        period: "May 2017 – Dec 2017", color: AEC   },
-  { id: "carmen-vasquez",  period: "Jan 2016 – Aug 2016", color: AEC   },
-  { id: "puente-piedra",   period: "Jun 2015 – Dec 2015", color: AEC   },
-  { id: "pet-center",      period: "Jul 2014 – Dec 2014", color: SAND  },
-  { id: "nuera-telecom",   period: "Jan 2013 – Aug 2013", color: SAND  },
+  { period: "Feb 2025 – Present"  },  // 0  Post Restaurant
+  { period: "Apr 2024 – Sep 2024" },  // 1  VOLT
+  { period: "Apr 2023 – Mar 2024" },  // 2  Irish Pub
+  { period: "Mar 2023 – Apr 2023" },  // 3  DistriLog
+  { period: "Dec 2022 – Apr 2023" },  // 4  Beyers
+  { period: "Jul 2022 – Sep 2022" },  // 5  Bistro31
+  { period: "Apr 2022 – Jul 2022" },  // 6  Greenyard
+  { period: "May 2020 – Aug 2021" },  // 7  Teleperformance
+  { period: "Jun 2019 – Mar 2020" },  // 8  WAO
+  { period: "Mar 2018 – May 2019" },  // 9  TEKTUM
+  { period: "Oct 2017 – Mar 2018" },  // 10 Los Portales
+  { period: "Jun 2017 – Mar 2018" },  // 11 IMP San Borja
+  { period: "May 2017 – Dec 2017" },  // 12 IMP Lima
+  { period: "Jan 2016 – Aug 2016" },  // 13 Arch. Carmen Vásquez
+  { period: "Jun 2015 – Dec 2015" },  // 14 Municipality of Puente Piedra
+  { period: "Jul 2014 – Dec 2014" },  // 15 Pet Center
+  { period: "Jan 2013 – Aug 2013" },  // 16 Nuera Telecom
+];
+
+// Grouped view: 4 cards shown in the timeline
+const EXP_GROUPS = [
+  { id: "hospitality",      color: CORAL, year: "Apr 2023 – Present",  label: "Hospitality & F&B",             subtitle: "Post Restaurant · VOLT · Irish Pub — Belgium",                  indices: [0, 1, 2]             },
+  { id: "warehouse",        color: SAGE,  year: "Apr 2022 – Apr 2023", label: "Warehouse & Logistics",         subtitle: "DistriLog · Beyers · Bistro31 · Greenyard — Belgium",            indices: [3, 4, 5, 6]          },
+  { id: "customer-service", color: SAND,  year: "Jan 2013 – Aug 2021", label: "Customer Service & Sales",      subtitle: "Teleperformance · Los Portales · Pet Center · Nuera Telecom",    indices: [7, 10, 15, 16]       },
+  { id: "architecture",     color: AEC,   year: "Jun 2015 – Mar 2020", label: "Architecture & Urban Planning", subtitle: "WAO · TEKTUM · IMP · Municipality of Puente Piedra — Peru",     indices: [8, 9, 11, 12, 13, 14] },
 ];
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
-function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onClose }) {
+function Modal({ open, title, period, entries = [], bullets = [], color = CORAL, onClose }) {
   const isDark = useTheme();
   useEffect(() => {
     if (!open) return;
@@ -47,36 +56,56 @@ function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onC
         >
           <div className="absolute inset-0 bg-black/75" onClick={onClose} />
           <motion.div
-            className="relative w-full max-w-xl rounded-3xl border border-white/10 p-6 shadow-2xl"
+            className="relative w-full max-w-xl rounded-3xl border border-white/10 shadow-2xl flex flex-col max-h-[85vh]"
             style={{ backgroundColor: isDark ? "#0F2018" : "#F5F2EC" }}
             initial={{ scale: 0.95, opacity: 0, y: 12 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 12 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 rounded-xl border border-white/10 bg-white/5 p-1.5 text-white/40 hover:text-white hover:bg-white/10 transition"
-            >
-              <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            <div className="pr-8">
-              <span className="text-[11px] font-semibold uppercase tracking-widest" style={{ color }}>{period}</span>
-              <h3 className="mt-2 text-xl font-bold text-white">{title}</h3>
-              {subtitle && <p className="mt-1 text-sm text-white/55">{subtitle}</p>}
+            {/* Fixed header */}
+            <div className="shrink-0 flex items-start justify-between gap-4 px-6 pt-6 pb-4 border-b border-white/8">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-widest" style={{ color }}>{period}</span>
+                <h3 className="mt-1 text-xl font-bold text-white">{title}</h3>
+              </div>
+              <button
+                onClick={onClose}
+                className="shrink-0 rounded-xl border border-white/10 bg-white/5 p-1.5 text-white/40 hover:text-white hover:bg-white/10 transition"
+              >
+                <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
             </div>
 
-            <ul className="mt-5 space-y-3">
-              {bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-sm text-white/75 leading-relaxed">
-                  <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
-                  {b}
-                </li>
-              ))}
-            </ul>
+            {/* Scrollable body */}
+            <div className="overflow-y-auto px-6 py-5 space-y-6">
+              {entries.length > 0 ? entries.map((entry, i) => (
+                <div key={i} className={i > 0 ? "border-t border-white/8 pt-5" : ""}>
+                  <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color }}>{entry.period}</span>
+                  <div className="mt-1 font-semibold text-white text-sm">{entry.title}</div>
+                  <div className="mt-0.5 text-xs text-white/45 mb-3">{entry.subtitle}</div>
+                  <ul className="space-y-2">
+                    {entry.bullets.map((b, j) => (
+                      <li key={j} className="flex gap-3 text-sm text-white/70 leading-relaxed">
+                        <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )) : (
+                <ul className="space-y-3">
+                  {bullets.map((b, i) => (
+                    <li key={i} className="flex gap-3 text-sm text-white/75 leading-relaxed">
+                      <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}
@@ -211,12 +240,19 @@ export default function CVDashboard({ t, downloads }) {
   ], [t, isDark]);
 
   const experience = useMemo(() =>
-    EXP_META.map((meta, i) => ({
-      ...meta,
-      year:     meta.period,
-      title:    t.cv.exp[i]?.title    ?? "",
-      subtitle: t.cv.exp[i]?.subtitle ?? "",
-      bullets:  t.cv.exp[i]?.bullets  ?? [],
+    EXP_GROUPS.map(group => ({
+      id:       group.id,
+      color:    group.color,
+      year:     group.year,
+      title:    group.label,
+      subtitle: group.subtitle,
+      bullets:  [],
+      entries:  group.indices.map(i => ({
+        period:   EXP_META[i].period,
+        title:    t.cv.exp[i]?.title    ?? "",
+        subtitle: t.cv.exp[i]?.subtitle ?? "",
+        bullets:  t.cv.exp[i]?.bullets  ?? [],
+      })),
     })),
   [t]);
 
@@ -454,9 +490,9 @@ export default function CVDashboard({ t, downloads }) {
       <Modal
         open={!!openData}
         title={openData?.title}
-        subtitle={openData?.subtitle}
         period={openData?.year}
-        bullets={openData?.bullets}
+        entries={openData?.entries ?? []}
+        bullets={openData?.bullets ?? []}
         color={openData?.color ?? CORAL}
         onClose={() => setOpenItem(null)}
       />
