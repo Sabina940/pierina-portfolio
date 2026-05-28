@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 const STATIC = {
   year:        "2025–2026",
   location:    "Mobilab & Care · Thomas More Kempen",
-  supervisors: "Bert Bonroy & Glen Debard",
+  supervisors: "Company Mentors",
   tags: [
     "Home Assistant", "Raspberry Pi 5", "MQTT", "Zigbee", "Python",
     "AppDaemon", "Alexa", "Matter Hub", "Nuki", "Telegram", "WhatsApp",

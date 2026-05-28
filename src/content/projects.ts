@@ -435,7 +435,6 @@ const raw: RawProject[] = [
     cover: "/assets/projects/campusbridge/cover.png",
     links: [
       { label: "View Project Analysis (PDF)", href: "/assets/Analysis and design report EN_template.pdf" },
-      { label: "View Figma Prototype", href: "https://www.figma.com/..." },
     ],
     stack: ["HTML/CSS", "Bootstrap", "PHP", "MySQL", "Jira", "Figma"],
     gallery: [
