@@ -129,7 +129,7 @@ export const ui: Record<Lang, UI> = {
       pill: "AEC → Applied Computer Science • Belgium",
       title: "I turn AEC project data into decisions.",
       body:
-        "I’m an architect transitioning into Applied Computer Science in Belgium. I bridge BIM/Revit, construction documentation, QA/QC, and site coordination with practical digital tools in AI/ML, computer vision, automation, and data visualization — so information becomes clearer, faster, and easier to act on.",
+        "I’m an architect transitioning into Applied Computer Science in Belgium. I bridge BIM/Revit, construction documentation, QA/QC, and site coordination with practical digital tools in AI/ML, computer vision, automation, and data visualization ,  so information becomes clearer, faster, and easier to act on.",
       cta1: "View Internship",
       cta2: "See Projects",
       cta3: "Download CV",
@@ -144,7 +144,7 @@ export const ui: Record<Lang, UI> = {
       findBullets: [
         "Verified internship evidence and clear documentation.",
         "Project case studies written for IT professionals.",
-        "Concrete learnings — specific, personal, and non-generic.",
+        "Concrete learnings ,  specific, personal, and non-generic.",
       ],
       quick: "Quick links",
     },
@@ -156,33 +156,33 @@ export const ui: Record<Lang, UI> = {
       tiles: {
         travel: {
           title: "Travel",
-          text: "Bike travel is the best — budget-friendly and the scenery is unmatched. I'll take a plane if the place is too far, but the goal is always the same: connecting with other cultures and living within different societies. Not the tourist experience — the local one. Finding spots only locals know, connecting with nature, getting lost in the mountains.",
+          text: "Bike travel is the best ,  budget-friendly and the scenery is unmatched. I'll take a plane if the place is too far, but the goal is always the same: connecting with other cultures and living within different societies. Not the tourist experience ,  the local one. Finding spots only locals know, connecting with nature, getting lost in the mountains.",
         },
         tattoo: {
           title: "Art & tattoo design",
-          text: "Creativity was always a passion, even before art classes gave it a name. Finding my way to tattooing was the perfect path — making art last a lifetime, on skin, with meaning. Every design is a small story that stays with someone forever.",
+          text: "Creativity was always a passion, even before art classes gave it a name. Finding my way to tattooing was the perfect path ,  making art last a lifetime, on skin, with meaning. Every design is a small story that stays with someone forever.",
         },
         arq: {
           title: "Architecture mindset",
-          text: "Connecting art and structure. Once an architect, always an architect. Trying to understand how people live within different types of buildings is something I learned to love, and that way of thinking never really leaves you — it just finds new problems to solve.",
+          text: "Connecting art and structure. Once an architect, always an architect. Trying to understand how people live within different types of buildings is something I learned to love, and that way of thinking never really leaves you ,  it just finds new problems to solve.",
         },
         read: {
           title: "Reading & writing",
-          text: "Imagining other people's lives in different buildings and environments — I did that from school. Writing was always at my fingertips. One of my dreams is to write a book, one that inspires people the way so many books have inspired me.",
+          text: "Imagining other people's lives in different buildings and environments ,  I did that from school. Writing was always at my fingertips. One of my dreams is to write a book, one that inspires people the way so many books have inspired me.",
         },
         iot: {
           title: "IoT & prototyping",
-          text: "From code to devices — I love the magic of it. Making things work with a few letters on a screen. The moment a sensor clicks or a light responds to an automation, something clicks in my head too. That connection between the digital and the physical is what keeps me building.",
+          text: "From code to devices ,  I love the magic of it. Making things work with a few letters on a screen. The moment a sensor clicks or a light responds to an automation, something clicks in my head too. That connection between the digital and the physical is what keeps me building.",
         },
         video: {
           title: "A glimpse of my world",
-          text: "Soldering a sensor, configuring a board, connecting the physical to the digital — this is where I feel most in flow. Working with my hands while thinking in code is exactly the kind of problem I want to keep solving.",
+          text: "Soldering a sensor, configuring a board, connecting the physical to the digital ,  this is where I feel most in flow. Working with my hands while thinking in code is exactly the kind of problem I want to keep solving.",
         },
       },
     },
     cv: {
       headline: "Applied Computer Science student • Architecture background • AEC → Tech",
-      summary: "Multilingual student with strong IT foundations, customer service experience, and a practical builder mindset — web apps, dashboards, and prototypes.",
+      summary: "Multilingual student with strong IT foundations, customer service experience, and a practical builder mindset ,  web apps, dashboards, and prototypes.",
       overview: "Overview", experience: "Experience", skills: "Skills", volunteering: "Volunteering", education: "Education",
       languagesTitle: "Languages", atAGlance: "At a glance", clickForDetails: "Click any card for details",
       detailsBtn: "details →", activeLabel: "Active", downloadBtn: "Download CV", softSkillsTitle: "Soft skills",
@@ -197,7 +197,7 @@ export const ui: Record<Lang, UI> = {
         "Analytical problem-solving & debugging",
         "Teamwork & collaboration (Agile / Scrum)",
         "Adaptability & eagerness to learn",
-        "Clear communication — technical & non-technical",
+        "Clear communication ,  technical & non-technical",
         "Time management, ownership, reliable on deliverables",
       ],
       languages: [
@@ -237,8 +237,8 @@ export const ui: Record<Lang, UI> = {
       stackLabel: "Stack",
       galleryLabel: "Gallery",
       supervisorsLabel: "Supervisors",
-      videoCaption: "Smart Home Demo — night path · bathroom check-in · help mode · adaptive learning",
-      context: "Prototype developed at Mobilab & Care (Thomas More Kempen) to support safer night-time routines for older adults living independently at home. Built on a locally controlled Home Assistant platform — no cloud dependency for safety functions. The Experience Lab apartment served as a realistic domestic test environment.",
+      videoCaption: "Smart Home Demo ,  night path · bathroom check-in · help mode · adaptive learning",
+      context: "Prototype developed at Mobilab & Care (Thomas More Kempen) to support safer night-time routines for older adults living independently at home. Built on a locally controlled Home Assistant platform ,  no cloud dependency for safety functions. The Experience Lab apartment served as a realistic domestic test environment.",
       stats: [
         { val: "26", lbl: "Automations" },
         { val: "5",  lbl: "Zones" },
@@ -250,31 +250,31 @@ export const ui: Record<Lang, UI> = {
         role: {
           label: "My Role",
           items: [
-            "Designed the full 5-layer system architecture — control, integration, input, output, and interface.",
+            "Designed the full 5-layer system architecture ,  control, integration, input, output, and interface.",
             "Built 26 Home Assistant automations covering night path lighting, bathroom check-in, help mode escalation, and adaptive scheduling.",
             "Developed a Python / AppDaemon component that analyses night mode history and proposes schedule updates for user approval.",
-            "Configured Alexa voice control via a locally hosted Matter Hub bridge — 6 routines covering all key scenarios.",
+            "Configured Alexa voice control via a locally hosted Matter Hub bridge ,  6 routines covering all key scenarios.",
             "Produced 4 documentation deliverables for future reuse: realization document, user manual, installation guide, and maintenance manual.",
           ],
         },
         built: {
           label: "What Was Built",
           items: [
-            "Night path lighting — bedroom to bathroom at 15–25% brightness and 2000–2400 K, triggered passively by motion.",
-            "Bathroom check-in flow — 5-minute inactivity timer escalates to a visual + audio nudge, then to full help mode if unanswered.",
-            "Help mode — every light to 80%, Nuki lock opens automatically, Telegram and WhatsApp alerts fire simultaneously.",
-            "Adaptive learning component — analyses activation history over a configurable window and proposes schedule updates.",
-            "4-view dashboard — daily control (Thuis), recommendations (Helper), spatial testing (Plan), room inspection (Gebied).",
+            "Night path lighting ,  bedroom to bathroom at 15–25% brightness and 2000–2400 K, triggered passively by motion.",
+            "Bathroom check-in flow ,  5-minute inactivity timer escalates to a visual + audio nudge, then to full help mode if unanswered.",
+            "Help mode ,  every light to 80%, Nuki lock opens automatically, Telegram and WhatsApp alerts fire simultaneously.",
+            "Adaptive learning component ,  analyses activation history over a configurable window and proposes schedule updates.",
+            "4-view dashboard ,  daily control (Thuis), recommendations (Helper), spatial testing (Plan), room inspection (Gebied).",
           ],
         },
         learned: {
           label: "What I Learned",
           items: [
-            "Safety-critical automations need humane escalation — the resident must have agency at every step, including from the floor.",
+            "Safety-critical automations need humane escalation ,  the resident must have agency at every step, including from the floor.",
             "Network-dependent projects require resolving institutional dependencies early, not as a late troubleshooting step.",
             "Research-driven design: every brightness value, timer, and colour temperature was justified by peer-reviewed literature.",
             "Writing for four different audiences simultaneously requires four fundamentally different registers and levels of detail.",
-            "Hardware capacity matters from the start — a Pi 3B ceiling forced a mid-project migration to Pi 5 with full backup restore.",
+            "Hardware capacity matters from the start ,  a Pi 3B ceiling forced a mid-project migration to Pi 5 with full backup restore.",
           ],
         },
       },
@@ -287,7 +287,7 @@ export const ui: Record<Lang, UI> = {
       pill: "AEC → Ciencias de la Computación Aplicadas • Bélgica",
       title: "Convierto datos AEC en decisiones.",
       body:
-        "Soy arquitecta en transición a Ciencias de la Computación Aplicadas en Bélgica. Conecto BIM/Revit, documentación de obra, QA/QC y coordinación en sitio con herramientas digitales prácticas en IA/ML, visión por computador, automatización y visualización de datos — para que la información sea más clara, rápida y accionable.",
+        "Soy arquitecta en transición a Ciencias de la Computación Aplicadas en Bélgica. Conecto BIM/Revit, documentación de obra, QA/QC y coordinación en sitio con herramientas digitales prácticas en IA/ML, visión por computador, automatización y visualización de datos ,  para que la información sea más clara, rápida y accionable.",
       cta1: "Ver Prácticas",
       cta2: "Ver Proyectos",
       cta3: "Descargar CV",
@@ -302,7 +302,7 @@ export const ui: Record<Lang, UI> = {
       findBullets: [
         "Evidencia verificada de prácticas y documentación clara.",
         "Casos de estudio dirigidos a profesionales de IT.",
-        "Aprendizajes concretos — específicos, personales y no genéricos.",
+        "Aprendizajes concretos ,  específicos, personales y no genéricos.",
       ],
       quick: "Enlaces rápidos",
     },
@@ -314,15 +314,15 @@ export const ui: Record<Lang, UI> = {
       tiles: {
       travel: {
         title: "Viajes",
-        text: "Viajar en bici es lo mejor — económico y con paisajes increíbles. Tomo un avión si el lugar está muy lejos, pero el objetivo siempre es el mismo: conectar con otras culturas y vivir dentro de diferentes sociedades. No la experiencia turística, sino la local. Encontrar lugares que solo conocen los de allí, conectar con la naturaleza, perderse en las montañas.",
+        text: "Viajar en bici es lo mejor ,  económico y con paisajes increíbles. Tomo un avión si el lugar está muy lejos, pero el objetivo siempre es el mismo: conectar con otras culturas y vivir dentro de diferentes sociedades. No la experiencia turística, sino la local. Encontrar lugares que solo conocen los de allí, conectar con la naturaleza, perderse en las montañas.",
       },
       tattoo: {
         title: "Arte y diseño de tatuajes",
-        text: "La creatividad siempre fue una pasión, incluso antes de que las clases de arte le dieran nombre. Encontrar mi camino en el tatuaje fue el paso perfecto — hacer que el arte dure toda una vida, en la piel, con significado. Cada diseño es una pequeña historia que acompaña a alguien para siempre.",
+        text: "La creatividad siempre fue una pasión, incluso antes de que las clases de arte le dieran nombre. Encontrar mi camino en el tatuaje fue el paso perfecto ,  hacer que el arte dure toda una vida, en la piel, con significado. Cada diseño es una pequeña historia que acompaña a alguien para siempre.",
       },
       arq: {
         title: "Mentalidad arquitectónica",
-        text: "Conectar el arte con la estructura. Una vez arquitecta, siempre arquitecta. Intentar entender cómo vive la gente en distintos tipos de edificios es algo que aprendí a amar, y esa forma de pensar nunca te abandona del todo — simplemente encuentra nuevos problemas que resolver.",
+        text: "Conectar el arte con la estructura. Una vez arquitecta, siempre arquitecta. Intentar entender cómo vive la gente en distintos tipos de edificios es algo que aprendí a amar, y esa forma de pensar nunca te abandona del todo ,  simplemente encuentra nuevos problemas que resolver.",
       },
       read: {
         title: "Lectura y escritura",
@@ -330,17 +330,17 @@ export const ui: Record<Lang, UI> = {
       },
       iot: {
         title: "IoT y prototipado",
-        text: "Del código a los dispositivos — amo la magia de eso. Hacer que las cosas funcionen con unas pocas letras en la pantalla. El momento en que un sensor responde o una luz reacciona a una automatización, algo también hace clic en mi cabeza. Esa conexión entre lo digital y lo físico es lo que me impulsa a seguir construyendo.",
+        text: "Del código a los dispositivos ,  amo la magia de eso. Hacer que las cosas funcionen con unas pocas letras en la pantalla. El momento en que un sensor responde o una luz reacciona a una automatización, algo también hace clic en mi cabeza. Esa conexión entre lo digital y lo físico es lo que me impulsa a seguir construyendo.",
       },
       video: {
         title: "Un vistazo a mi mundo",
-        text: "Soldar un sensor, configurar una placa, conectar lo físico con lo digital — aquí es donde más me siento en flow. Trabajar con las manos mientras pienso en código es exactamente el tipo de problema que quiero seguir resolviendo.",
+        text: "Soldar un sensor, configurar una placa, conectar lo físico con lo digital ,  aquí es donde más me siento en flow. Trabajar con las manos mientras pienso en código es exactamente el tipo de problema que quiero seguir resolviendo.",
       },
     },
     },
     cv: {
       headline: "Estudiante de Informática Aplicada • Arquitectura • AEC → Tech",
-      summary: "Estudiante multilingüe con sólidas bases en IT, experiencia en atención al cliente y mentalidad práctica — apps web, dashboards y prototipos.",
+      summary: "Estudiante multilingüe con sólidas bases en IT, experiencia en atención al cliente y mentalidad práctica ,  apps web, dashboards y prototipos.",
       overview: "Resumen", experience: "Experiencia", skills: "Habilidades", volunteering: "Voluntariado", education: "Educación",
       languagesTitle: "Idiomas", atAGlance: "De un vistazo", clickForDetails: "Haz clic en cualquier tarjeta",
       detailsBtn: "detalles →", activeLabel: "Activo", downloadBtn: "Descargar CV", softSkillsTitle: "Habilidades blandas",
@@ -355,7 +355,7 @@ export const ui: Record<Lang, UI> = {
         "Resolución analítica de problemas y depuración",
         "Trabajo en equipo y colaboración (Agile / Scrum)",
         "Adaptabilidad y ganas de aprender",
-        "Comunicación clara — técnica y no técnica",
+        "Comunicación clara ,  técnica y no técnica",
         "Gestión del tiempo, responsabilidad, fiabilidad en entregas",
       ],
       languages: [
@@ -364,7 +364,7 @@ export const ui: Record<Lang, UI> = {
         { name: "Neerlandés", level: "Básico (aprendiendo)" },
       ],
       exp: {
-        horeca:    { title: "Barman / Camarera (trabajos de estudiante)", subtitle: "Post Restaurant, VOLT, Irish Pub — Bélgica", bullets: ["Brindé servicio atento en entornos de alta demanda; gestioné pedidos de barra y mesa.", "Preparé cócteles y bebidas según estándares del local y preferencias del cliente.", "Controlé niveles de stock y apoyé en normas de higiene y seguridad."] },
+        horeca:    { title: "Barman / Camarera (trabajos de estudiante)", subtitle: "Post Restaurant, VOLT, Irish Pub -  Bélgica", bullets: ["Brindé servicio atento en entornos de alta demanda; gestioné pedidos de barra y mesa.", "Preparé cócteles y bebidas según estándares del local y preferencias del cliente.", "Controlé niveles de stock y apoyé en normas de higiene y seguridad."] },
         warehouse: { title: "Asistente de Operaciones y Almacén", subtitle: "Distrilog, Beyers, Greenyard — Bélgica", bullets: ["Empaqueté, clasificé y preparé grandes volúmenes de productos para envío.", "Operé equipos de apilado y enfardado de palés siguiendo procedimientos de seguridad.", "Apoyé flujos logísticos manteniendo los puestos de trabajo limpios y organizados."] },
         sales:     { title: "Representante de Atención al Cliente y Ventas", subtitle: "Teleperformance, Los Portales, Pet Center — Perú y Remoto", bullets: ["Resolví consultas y quejas de clientes buscando alta satisfacción.", "Apliqué upselling/cross-selling para aumentar ventas y fidelidad.", "Gestioné pagos y mantuve registros precisos en entornos de alta demanda."] },
         aec:       { title: "Asistente de Arquitectura y Urbanismo", subtitle: "WAO, TEKTUM, IMP, Municipalidad de Puente Piedra — Perú", bullets: ["Elaboré planos arquitectónicos y urbanísticos en AutoCAD/Revit con flujos BIM.", "Apoyé investigación, análisis de datos y preparación de presentaciones.", "Asistí en inspecciones de obra, documentación, presupuestos y coordinación."] },
@@ -379,7 +379,7 @@ export const ui: Record<Lang, UI> = {
       },
     },
     projects: {
-      pill: "Casos de estudio", subtitle: "Contexto, qué construí y qué aprendí — escrito para profesionales de IT.",
+      pill: "Casos de estudio", subtitle: "Contexto, qué construí y qué aprendí ,  escrito para profesionales de IT.",
       statProjects: "Proyectos", statTech: "Tecnologías", statLatest: "Último",
       filterAll: "Todos", emptyState: "Ningún proyecto coincide con este filtro.", viewBtn: "Ver →",
       backBtn: "Volver a proyectos", artifacts: "Recursos", demoVideo: "Video demo",
@@ -395,8 +395,8 @@ export const ui: Record<Lang, UI> = {
       stackLabel: "Tecnologías",
       galleryLabel: "Galería",
       supervisorsLabel: "Supervisores",
-      videoCaption: "Demo Hogar Inteligente — recorrido nocturno · check-in baño · modo ayuda · aprendizaje adaptativo",
-      context: "Prototipo desarrollado en Mobilab & Care (Thomas More Kempen) para apoyar rutinas nocturnas más seguras en adultos mayores que viven de forma independiente. Construido sobre una plataforma Home Assistant controlada localmente — sin dependencia de la nube para las funciones de seguridad. El apartamento del Experience Lab sirvió como entorno doméstico de prueba realista.",
+      videoCaption: "Demo Hogar Inteligente ,  recorrido nocturno · check-in baño · modo ayuda · aprendizaje adaptativo",
+      context: "Prototipo desarrollado en Mobilab & Care (Thomas More Kempen) para apoyar rutinas nocturnas más seguras en adultos mayores que viven de forma independiente. Construido sobre una plataforma Home Assistant controlada localmente ,  sin dependencia de la nube para las funciones de seguridad. El apartamento del Experience Lab sirvió como entorno doméstico de prueba realista.",
       stats: [
         { val: "26", lbl: "Automatizaciones" },
         { val: "5",  lbl: "Zonas" },
@@ -408,31 +408,31 @@ export const ui: Record<Lang, UI> = {
         role: {
           label: "Mi Rol",
           items: [
-            "Diseñé la arquitectura completa del sistema de 5 capas — control, integración, entrada, salida e interfaz.",
+            "Diseñé la arquitectura completa del sistema de 5 capas ,  control, integración, entrada, salida e interfaz.",
             "Construí 26 automatizaciones de Home Assistant que cubren iluminación del camino nocturno, check-in de baño, escalada del modo ayuda y programación adaptativa.",
             "Desarrollé un componente Python/AppDaemon que analiza el historial del modo nocturno y propone actualizaciones de horario para aprobación del usuario.",
-            "Configuré el control de voz Alexa mediante un bridge Matter Hub alojado localmente — 6 rutinas que cubren todos los escenarios clave.",
+            "Configuré el control de voz Alexa mediante un bridge Matter Hub alojado localmente ,  6 rutinas que cubren todos los escenarios clave.",
             "Produje 4 entregables de documentación para reutilización futura: documento de realización, manual de usuario, guía de instalación y manual de mantenimiento.",
           ],
         },
         built: {
           label: "Qué Construí",
           items: [
-            "Iluminación del camino nocturno — dormitorio al baño al 15–25% de brillo y 2000–2400 K, activada pasivamente por movimiento.",
-            "Flujo de check-in de baño — temporizador de 5 minutos de inactividad escala a recordatorio visual + sonoro, luego a modo ayuda completo si no hay respuesta.",
-            "Modo ayuda — todas las luces al 80%, la cerradura Nuki abre automáticamente, alertas de Telegram y WhatsApp se envían simultáneamente.",
-            "Componente de aprendizaje adaptativo — analiza el historial de activación en una ventana configurable y propone actualizaciones de horario.",
-            "Panel de control de 4 vistas — control diario (Thuis), recomendaciones (Helper), pruebas espaciales (Plan), inspección de habitaciones (Gebied).",
+            "Iluminación del camino nocturno ,  dormitorio al baño al 15–25% de brillo y 2000–2400 K, activada pasivamente por movimiento.",
+            "Flujo de check-in de baño ,  temporizador de 5 minutos de inactividad escala a recordatorio visual + sonoro, luego a modo ayuda completo si no hay respuesta.",
+            "Modo ayuda ,  todas las luces al 80%, la cerradura Nuki abre automáticamente, alertas de Telegram y WhatsApp se envían simultáneamente.",
+            "Componente de aprendizaje adaptativo ,  analiza el historial de activación en una ventana configurable y propone actualizaciones de horario.",
+            "Panel de control de 4 vistas ,  control diario (Thuis), recomendaciones (Helper), pruebas espaciales (Plan), inspección de habitaciones (Gebied).",
           ],
         },
         learned: {
           label: "Qué Aprendí",
           items: [
-            "Las automatizaciones críticas para la seguridad necesitan una escalada humana — el residente debe tener agencia en cada paso, incluso desde el suelo.",
+            "Las automatizaciones críticas para la seguridad necesitan una escalada humana ,  el residente debe tener agencia en cada paso, incluso desde el suelo.",
             "Los proyectos dependientes de la red requieren resolver dependencias institucionales desde el principio, no como paso tardío de solución de problemas.",
             "Diseño basado en investigación: cada valor de brillo, temporizador y temperatura de color fue justificado por literatura científica revisada por pares.",
             "Escribir para cuatro audiencias diferentes simultáneamente requiere cuatro registros y niveles de detalle fundamentalmente distintos.",
-            "La capacidad del hardware importa desde el inicio — un techo de Pi 3B obligó a una migración a Pi 5 a mitad del proyecto con restauración completa de copia de seguridad.",
+            "La capacidad del hardware importa desde el inicio ,  un techo de Pi 3B obligó a una migración a Pi 5 a mitad del proyecto con restauración completa de copia de seguridad.",
           ],
         },
       },
@@ -445,7 +445,7 @@ export const ui: Record<Lang, UI> = {
       pill: "AEC → Toegepaste Informatica • België",
       title: "Ik zet AEC-data om in beslissingen.",
       body:
-        "Ik ben architect en stap over naar Toegepaste Informatica in België. Ik verbind BIM/Revit, werfdocumentatie, QA/QC en sitecoördinatie met praktische digitale tools in AI/ML, computer vision, automatisering en datavisualisatie — zodat informatie duidelijker, sneller en beter bruikbaar wordt.",
+        "Ik ben architect en stap over naar Toegepaste Informatica in België. Ik verbind BIM/Revit, werfdocumentatie, QA/QC en sitecoördinatie met praktische digitale tools in AI/ML, computer vision, automatisering en datavisualisatie ,  zodat informatie duidelijker, sneller en beter bruikbaar wordt.",
       cta1: "Bekijk Stage",
       cta2: "Bekijk Projecten",
       cta3: "Download CV",
@@ -472,33 +472,33 @@ export const ui: Record<Lang, UI> = {
       tiles: {
       travel: {
         title: "Reizen",
-        text: "Fietsen is de beste manier om te reizen — budgetvriendelijk en met prachtige landschappen. Voor verre bestemmingen neem ik een vliegtuig, maar het doel blijft hetzelfde: verbinding maken met andere culturen en leven in andere samenlevingen. Niet de toeristische ervaring, maar de lokale. Plekken ontdekken die alleen locals kennen, de natuur in, verdwalen in de bergen.",
+        text: "Fietsen is de beste manier om te reizen ,  budgetvriendelijk en met prachtige landschappen. Voor verre bestemmingen neem ik een vliegtuig, maar het doel blijft hetzelfde: verbinding maken met andere culturen en leven in andere samenlevingen. Niet de toeristische ervaring, maar de lokale. Plekken ontdekken die alleen locals kennen, de natuur in, verdwalen in de bergen.",
       },
       tattoo: {
         title: "Kunst & tattoo-ontwerp",
-        text: "Creativiteit was altijd een passie, al vóór de kunstlessen het een naam gaven. Mijn weg vinden in tatoeages was het perfecte pad — kunst laten duren voor een heel leven, op de huid, met betekenis. Elk ontwerp is een klein verhaal dat iemand voor altijd bij zich draagt.",
+        text: "Creativiteit was altijd een passie, al vóór de kunstlessen het een naam gaven. Mijn weg vinden in tatoeages was het perfecte pad ,  kunst laten duren voor een heel leven, op de huid, met betekenis. Elk ontwerp is een klein verhaal dat iemand voor altijd bij zich draagt.",
       },
       arq: {
         title: "Architectuur mindset",
-        text: "Kunst en structuur verbinden. Eens een architect, altijd een architect. Begrijpen hoe mensen leven in verschillende soorten gebouwen is iets dat ik leerde liefhebben, en die manier van denken verlaat je nooit echt — ze vindt gewoon nieuwe problemen om op te lossen.",
+        text: "Kunst en structuur verbinden. Eens een architect, altijd een architect. Begrijpen hoe mensen leven in verschillende soorten gebouwen is iets dat ik leerde liefhebben, en die manier van denken verlaat je nooit echt ,  ze vindt gewoon nieuwe problemen om op te lossen.",
       },
       read: {
         title: "Lezen & schrijven",
-        text: "Andermans leven voorstellen in verschillende gebouwen en omgevingen — dat deed ik al op school. Schrijven lag altijd op het puntje van mijn vingers. Een van mijn dromen is een boek schrijven, een dat mensen inspireert zoals zoveel boeken mij hebben geïnspireerd.",
+        text: "Andermans leven voorstellen in verschillende gebouwen en omgevingen ,  dat deed ik al op school. Schrijven lag altijd op het puntje van mijn vingers. Een van mijn dromen is een boek schrijven, een dat mensen inspireert zoals zoveel boeken mij hebben geïnspireerd.",
       },
       iot: {
         title: "IoT & prototyping",
-        text: "Van code naar apparaten — ik hou van de magie ervan. Dingen laten werken met een paar letters op een scherm. Het moment dat een sensor reageert of een lamp zich aanpast aan een automatisering: dan klikt er ook iets in mijn hoofd. Die verbinding tussen het digitale en het fysieke is wat me blijft motiveren.",
+        text: "Van code naar apparaten ,  ik hou van de magie ervan. Dingen laten werken met een paar letters op een scherm. Het moment dat een sensor reageert of een lamp zich aanpast aan een automatisering: dan klikt er ook iets in mijn hoofd. Die verbinding tussen het digitale en het fysieke is wat me blijft motiveren.",
       },
       video: {
         title: "Een kijkje in mijn wereld",
-        text: "Een sensor solderen, een board configureren, het fysieke verbinden met het digitale — hier voel ik me het meest in flow. Werken met mijn handen terwijl ik in code denk is precies het soort probleem dat ik wil blijven oplossen.",
+        text: "Een sensor solderen, een board configureren, het fysieke verbinden met het digitale ,  hier voel ik me het meest in flow. Werken met mijn handen terwijl ik in code denk is precies het soort probleem dat ik wil blijven oplossen.",
       },
     },
     },
     cv: {
       headline: "Student Toegepaste Informatica • Architectuur achtergrond • AEC → Tech",
-      summary: "Meertalige student met sterke IT-basis, ervaring in klantenservice en een praktische bouwmentaliteit — web apps, dashboards en prototypes.",
+      summary: "Meertalige student met sterke IT-basis, ervaring in klantenservice en een praktische bouwmentaliteit ,  web apps, dashboards en prototypes.",
       overview: "Overzicht", experience: "Ervaring", skills: "Vaardigheden", volunteering: "Vrijwilligerswerk", education: "Opleiding",
       languagesTitle: "Talen", atAGlance: "In één oogopslag", clickForDetails: "Klik op een kaart voor details",
       detailsBtn: "details →", activeLabel: "Actief", downloadBtn: "Download CV", softSkillsTitle: "Soft skills",
@@ -513,7 +513,7 @@ export const ui: Record<Lang, UI> = {
         "Analytisch probleemoplossen & debuggen",
         "Teamwork & samenwerking (Agile / Scrum)",
         "Aanpassingsvermogen & leergierigheid",
-        "Heldere communicatie — technisch & niet-technisch",
+        "Heldere communicatie ,  technisch & niet-technisch",
         "Tijdsbeheer, verantwoordelijkheid, betrouwbaar op deadlines",
       ],
       languages: [
@@ -537,7 +537,7 @@ export const ui: Record<Lang, UI> = {
       },
     },
     projects: {
-      pill: "Casestudy's", subtitle: "Context, wat ik bouwde en wat ik leerde — geschreven voor IT-professionals.",
+      pill: "Casestudy's", subtitle: "Context, wat ik bouwde en wat ik leerde ,  geschreven voor IT-professionals.",
       statProjects: "Projecten", statTech: "Technologieën", statLatest: "Laatste",
       filterAll: "Alle", emptyState: "Geen projecten gevonden voor dit filter.", viewBtn: "Bekijk →",
       backBtn: "Terug naar projecten", artifacts: "Artefacten", demoVideo: "Demovideo",
@@ -553,8 +553,8 @@ export const ui: Record<Lang, UI> = {
       stackLabel: "Technologieën",
       galleryLabel: "Galerij",
       supervisorsLabel: "Begeleiders",
-      videoCaption: "Smart Home Demo — nachtpad · badkamer check-in · hulpmodus · adaptief leren",
-      context: "Prototype ontwikkeld bij Mobilab & Care (Thomas More Kempen) ter ondersteuning van veiligere nachtelijke routines voor ouderen die zelfstandig wonen. Gebouwd op een lokaal beheerde Home Assistant-omgeving — geen cloudafhankelijkheid voor veiligheidsfuncties. Het Experience Lab-appartement fungeerde als realistisch testdomein.",
+      videoCaption: "Smart Home Demo ,  nachtpad · badkamer check-in · hulpmodus · adaptief leren",
+      context: "Prototype ontwikkeld bij Mobilab & Care (Thomas More Kempen) ter ondersteuning van veiligere nachtelijke routines voor ouderen die zelfstandig wonen. Gebouwd op een lokaal beheerde Home Assistant-omgeving ,  geen cloudafhankelijkheid voor veiligheidsfuncties. Het Experience Lab-appartement fungeerde als realistisch testdomein.",
       stats: [
         { val: "26", lbl: "Automatiseringen" },
         { val: "5",  lbl: "Zones" },
@@ -566,31 +566,31 @@ export const ui: Record<Lang, UI> = {
         role: {
           label: "Mijn Rol",
           items: [
-            "Ontwierp de volledige 5-laags systeemarchitectuur — besturing, integratie, invoer, uitvoer en interface.",
+            "Ontwierp de volledige 5-laags systeemarchitectuur ,  besturing, integratie, invoer, uitvoer en interface.",
             "Bouwde 26 Home Assistant-automatiseringen voor nachtpadverlichting, badkamer check-in, hulpmodus-escalatie en adaptieve planning.",
             "Ontwikkelde een Python/AppDaemon-component dat de nachtmodus-geschiedenis analyseert en schema-updates voorstelt ter goedkeuring van de gebruiker.",
-            "Configureerde Alexa-spraakbediening via een lokaal gehoste Matter Hub bridge — 6 routines voor alle sleutelscenario's.",
+            "Configureerde Alexa-spraakbediening via een lokaal gehoste Matter Hub bridge ,  6 routines voor alle sleutelscenario's.",
             "Produceerde 4 documentatiedeliverables voor toekomstig hergebruik: realisatiedocument, gebruikershandleiding, installatiegids en onderhoudshandleiding.",
           ],
         },
         built: {
           label: "Wat Gebouwd",
           items: [
-            "Nachtpadverlichting — slaapkamer naar badkamer op 15–25% helderheid en 2000–2400 K, passief geactiveerd door beweging.",
-            "Badkamer check-in stroom — 5 minuten inactiviteitsklok escaleert naar visueel + audiosignaal, daarna volledige hulpmodus als er geen reactie is.",
-            "Hulpmodus — alle lampen op 80%, Nuki-slot opent automatisch, Telegram en WhatsApp-meldingen worden gelijktijdig verzonden.",
-            "Adaptief leercomponent — analyseert activeringsgeschiedenis over een configureerbaar venster en stelt schema-updates voor.",
-            "Dashboard met 4 weergaven — dagelijks beheer (Thuis), aanbevelingen (Helper), ruimtelijk testen (Plan), kamerinspectie (Gebied).",
+            "Nachtpadverlichting ,  slaapkamer naar badkamer op 15–25% helderheid en 2000–2400 K, passief geactiveerd door beweging.",
+            "Badkamer check-in stroom ,  5 minuten inactiviteitsklok escaleert naar visueel + audiosignaal, daarna volledige hulpmodus als er geen reactie is.",
+            "Hulpmodus ,  alle lampen op 80%, Nuki-slot opent automatisch, Telegram en WhatsApp-meldingen worden gelijktijdig verzonden.",
+            "Adaptief leercomponent ,  analyseert activeringsgeschiedenis over een configureerbaar venster en stelt schema-updates voor.",
+            "Dashboard met 4 weergaven ,  dagelijks beheer (Thuis), aanbevelingen (Helper), ruimtelijk testen (Plan), kamerinspectie (Gebied).",
           ],
         },
         learned: {
           label: "Wat Geleerd",
           items: [
-            "Veiligheidskritieke automatiseringen vereisen humane escalatie — de bewoner moet in elke stap handelingsvermogen hebben, ook vanaf de vloer.",
+            "Veiligheidskritieke automatiseringen vereisen humane escalatie ,  de bewoner moet in elke stap handelingsvermogen hebben, ook vanaf de vloer.",
             "Netwerkafhankelijke projecten vereisen dat institutionele afhankelijkheden vroeg worden opgelost, niet als late probleemoplossingsstap.",
             "Onderzoeksgestuurd ontwerp: elke helderheidswaarde, timer en kleurtemperatuur werd onderbouwd door peer-reviewed literatuur.",
             "Schrijven voor vier verschillende doelgroepen tegelijkertijd vereist vier fundamenteel verschillende registers en detailniveaus.",
-            "Hardwarecapaciteit is van het begin af aan belangrijk — een Pi 3B-limiet dwong tot een migratie naar Pi 5 midden in het project met volledig back-upherstel.",
+            "Hardwarecapaciteit is van het begin af aan belangrijk ,  een Pi 3B-limiet dwong tot een migratie naar Pi 5 midden in het project met volledig back-upherstel.",
           ],
         },
       },

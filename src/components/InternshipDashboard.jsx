@@ -11,6 +11,7 @@ const STATIC = {
   ],
   videoSrc: "/assets/projects/internship/demo.mp4",
   links: [
+    { label: "Project Plan",         href: "/assets/projects/internship/project-plan.pdf" },
     { label: "Realization Document", href: "/assets/projects/internship/realization-document.pdf" },
     { label: "Reflection Document",  href: "/assets/projects/internship/reflection.pdf" },
   ],
