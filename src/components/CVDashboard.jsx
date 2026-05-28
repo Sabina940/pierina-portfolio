@@ -5,6 +5,27 @@ import { useTheme } from "../hooks/useTheme";
 const CORAL = "#C96B4A";
 const SAGE  = "#8FAF93";
 const SAND  = "#C9BF9A";
+const AEC   = "#A8B5C2";
+
+const EXP_META = [
+  { id: "post-restaurant", period: "Feb 2025 – Present",  color: CORAL },
+  { id: "volt",            period: "Apr 2024 – Sep 2024", color: CORAL },
+  { id: "irish-pub",       period: "Apr 2023 – Mar 2024", color: CORAL },
+  { id: "distrilog",       period: "Mar 2023 – Apr 2023", color: SAGE  },
+  { id: "beyers",          period: "Dec 2022 – Apr 2023", color: SAGE  },
+  { id: "bistro31",        period: "Jul 2022 – Sep 2022", color: SAGE  },
+  { id: "greenyard",       period: "Apr 2022 – Jul 2022", color: SAGE  },
+  { id: "teleperformance", period: "May 2020 – Aug 2021", color: SAND  },
+  { id: "wao",             period: "Jun 2019 – Mar 2020", color: AEC   },
+  { id: "tektum",          period: "Mar 2018 – May 2019", color: AEC   },
+  { id: "los-portales",    period: "Oct 2017 – Mar 2018", color: SAND  },
+  { id: "imp-sanborja",    period: "Jun 2017 – Mar 2018", color: AEC   },
+  { id: "imp-lima",        period: "May 2017 – Dec 2017", color: AEC   },
+  { id: "carmen-vasquez",  period: "Jan 2016 – Aug 2016", color: AEC   },
+  { id: "puente-piedra",   period: "Jun 2015 – Dec 2015", color: AEC   },
+  { id: "pet-center",      period: "Jul 2014 – Dec 2014", color: SAND  },
+  { id: "nuera-telecom",   period: "Jan 2013 – Aug 2013", color: SAND  },
+];
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 function Modal({ open, title, subtitle, period, bullets = [], color = CORAL, onClose }) {
@@ -189,46 +210,15 @@ export default function CVDashboard({ t, downloads }) {
     { val: "IoT", lbl: t.cv.statFocus,      color: isDark ? "rgba(255,255,255,0.55)" : "rgba(15,32,24,0.55)" },
   ], [t, isDark]);
 
-  const experience = useMemo(() => [
-    {
-      id: "student-horeca", color: CORAL,
-      year: "2023 – Present",
-      title:    t.cv.exp.horeca.title,
-      subtitle: t.cv.exp.horeca.subtitle,
-      bullets:  t.cv.exp.horeca.bullets,
-    },
-    {
-      id: "ops-warehouse", color: SAGE,
-      year: "2022 – 2023",
-      title:    t.cv.exp.warehouse.title,
-      subtitle: t.cv.exp.warehouse.subtitle,
-      bullets:  t.cv.exp.warehouse.bullets,
-    },
-    {
-      id: "customer-sales", color: SAND,
-      year: "2013 – 2021",
-      title:    t.cv.exp.sales.title,
-      subtitle: t.cv.exp.sales.subtitle,
-      bullets:  t.cv.exp.sales.bullets,
-    },
-    {
-      id: "aec", color: SAND,
-      year: "2015 – 2020",
-      title:    t.cv.exp.aec.title,
-      subtitle: t.cv.exp.aec.subtitle,
-      bullets:  t.cv.exp.aec.bullets,
-    },
-  ], [t]);
-
-  const volunteering = useMemo(() => [
-    {
-      id: "vol-barista", color: SAGE,
-      year: "Oct 2022 – Dec 2024",
-      title:    t.cv.vol.barista.title,
-      subtitle: t.cv.vol.barista.subtitle,
-      bullets:  t.cv.vol.barista.bullets,
-    },
-  ], [t]);
+  const experience = useMemo(() =>
+    EXP_META.map((meta, i) => ({
+      ...meta,
+      year:     meta.period,
+      title:    t.cv.exp[i]?.title    ?? "",
+      subtitle: t.cv.exp[i]?.subtitle ?? "",
+      bullets:  t.cv.exp[i]?.bullets  ?? [],
+    })),
+  [t]);
 
   const education = useMemo(() => [
     { title: t.cv.edu.cs.title,      subtitle: t.cv.edu.cs.subtitle,      year: "2022 – Present", active: true,  color: CORAL, icon: "🎓" },
@@ -236,10 +226,23 @@ export default function CVDashboard({ t, downloads }) {
     { title: t.cv.edu.autocad.title, subtitle: t.cv.edu.autocad.subtitle, year: "2016",          active: false, color: SAND,  icon: "📐" },
   ], [t]);
 
-  const skillGroups = useMemo(() => [
-    { label: t.cv.skillWeb,  color: CORAL, skills: ["Laravel", "Livewire", "Blade", "HTML5 / CSS3", "Tailwind CSS", "JavaScript", "Alpine.js", "PHP", "MySQL", "Eloquent ORM"] },
-    { label: t.cv.skillData, color: SAGE,  skills: ["Qlik Sense", "Data modelling", "Excel (intermediate)", "Git / GitHub", "Jira", "VS Code"] },
-    { label: t.cv.skillAec,  color: SAND,  skills: ["AutoCAD", "Revit", "BIM workflows", "Prezi", "Microsoft Office", "Google Workspace"] },
+  const skillGroups = [
+    { label: "AI & Machine Learning", color: CORAL, skills: ["Python", "LLM inference — Ollama (local) + RAG pipelines", "LangChain, LangGraph, ChromaDB", "FastAPI + WebSockets", "Faster-Whisper (speech-to-text)", "TensorFlow / Keras — CNN, MobileNetV2"] },
+    { label: "Computer Vision",       color: SAGE,  skills: ["YOLOv8 (object detection & tracking)", "OpenCV (image processing, homography)", "dlib (face recognition & landmarks)", "Roboflow (dataset annotation)", "Streamlit (CV demo UIs)"] },
+    { label: "IoT & Embedded Systems", color: SAND, skills: ["Home Assistant — 26 automations", "AppDaemon (Python automation)", "Raspberry Pi (GPIO, sensors, Pi 3B → Pi 5)", "ESP32 + C++ (PlatformIO, BMP280/BH1750)", "MQTT, Matter Hub, Alexa", "Flask (local IoT APIs)"] },
+    { label: "Web Development",        color: AEC,  skills: ["Laravel + Livewire (TALL stack)", "PHP + MySQL", "HTML5, CSS3, Bootstrap, Tailwind CSS", "JavaScript (basic), Alpine.js", "Figma (UX/UI prototyping)"] },
+    { label: "Data & Analytics",       color: CORAL, skills: ["Qlik Sense (dashboards & data modelling)", "Grafana (real-time monitoring)", "Streamlit (data apps & reporting)", "Excel (intermediate)"] },
+    { label: "Tools & DevOps",         color: SAGE,  skills: ["Git, GitHub, GitLab CI", "Docker (containerisation & deployment)", "Jira (Agile / Scrum)", "VS Code, AutoCAD, Revit", "Microsoft Office, Google Workspace"] },
+  ];
+
+  const volunteering = useMemo(() => [
+    {
+      id: "vol-barista", color: SAGE,
+      year: "Oct 2022 – Present",
+      title:    t.cv.vol.barista.title,
+      subtitle: t.cv.vol.barista.subtitle,
+      bullets:  t.cv.vol.barista.bullets,
+    },
   ], [t]);
 
   const allItems = [...experience, ...volunteering];
@@ -371,7 +374,7 @@ export default function CVDashboard({ t, downloads }) {
           {/* Skills */}
           {activeTab === "skills" && (
             <div className="grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {skillGroups.map((g, i) => <SkillGroup key={g.label} {...g} index={i} />)}
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
