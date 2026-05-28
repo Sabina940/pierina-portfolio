@@ -34,12 +34,19 @@ const t = ui[lang];
 
       <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-8">
 
-        <!-- Profile photo -->
-        <img
-          src="/assets/profile.png"
-          alt="Pierina Lopez"
-          class="shrink-0 h-28 w-28 sm:h-36 sm:w-36 rounded-2xl object-cover object-top border border-white/10 shadow-lg"
-        />
+        <!-- Profile photo — gradient ring circle -->
+        <div
+          class="shrink-0 p-[2.5px] rounded-full bg-gradient-to-br from-[#C96B4A] via-[#8FAF93] to-[#C9BF9A]"
+          style="box-shadow: 0 0 28px rgba(201,107,74,0.25), 0 0 10px rgba(143,175,147,0.15);"
+        >
+          <div class="h-28 w-28 sm:h-36 sm:w-36 rounded-full overflow-hidden">
+            <img
+              src="/assets/profile.png"
+              alt="Pierina Lopez"
+              class="h-full w-full object-cover object-top"
+            />
+          </div>
+        </div>
 
         <div class="max-w-2xl">
 
